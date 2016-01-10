@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="GB2312"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:attributeGroup name="文段类别">
+		<xs:annotation>
+			<xs:documentation>引用文段类别</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="类别">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="文段"/>
+					<xs:enumeration value="诗词"/>
+					<xs:enumeration value="程序"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="文段性质">
+		<xs:annotation>
+			<xs:documentation>特殊元素性质</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="性质">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="着重"/>
+					<xs:enumeration value="引用"/>
+					<xs:enumeration value="专名"/>
+					<xs:enumeration value="代码"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="图片属性">
+		<xs:attribute name="canEnlarge" type="xs:boolean" use="optional" default="false"/>
+		<xs:attribute name="placement" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="center"/>
+					<xs:enumeration value="left"/>
+					<xs:enumeration value="right"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="height" type="xs:nonNegativeInteger" use="optional"/>
+		<xs:attribute name="width" type="xs:nonNegativeInteger" use="optional"/>
+		<xs:attribute name="src" type="xs:anyURI" use="required"/>
+		<xs:attribute name="href" type="xs:anyURI" use="optional"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="连接属性">
+		<xs:attribute name="xhref" type="xs:anyURI" use="required"/>
+		<xs:attribute name="xtitle" type="xs:string" use="optional"/>
+		<xs:attribute name="xtarget" type="xs:Name" use="optional"/>
+		<xs:attribute name="xtype" use="optional" default="XML">
+			<xs:simpleType>
+				<xs:restriction base="xs:NCName">
+					<xs:enumeration value="XML"/>
+					<xs:enumeration value="URI"/>
+					<xs:enumeration value="file"/>
+					<xs:enumeration value="pic"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="id" type="xs:ID" use="optional"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="扩展属性">
+		<xs:anyAttribute namespace="##any"/>
+	</xs:attributeGroup>
+	<!--文段-->
+	<xs:complexType name="文段Type" mixed="true">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element ref="标记"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:element name="标题">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="标题Type"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="标题Type" mixed="true">
+		<xs:sequence minOccurs="0">
+			<xs:element name="眉题" type="文段Type" minOccurs="0"/>
+			<xs:element name="副题" type="文段Type" minOccurs="0"/>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="标记" minOccurs="0"/>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID"/>
+	</xs:complexType>
+	<xs:element name="段落" type="段落Type"/>
+	<xs:complexType name="段落Type" mixed="true">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element ref="引文"/>
+			<xs:element ref="标记"/>
+		</xs:choice>
+		<xs:attribute name="缩进" type="xs:boolean" default="true"/>
+	</xs:complexType>
+	<xs:element name="副标题">
+		<xs:complexType mixed="true">
+			<xs:complexContent mixed="true">
+				<xs:restriction base="标题Type">
+					<xs:sequence minOccurs="0">
+						<xs:choice minOccurs="0" maxOccurs="unbounded">
+							<xs:element ref="标记" minOccurs="0"/>
+						</xs:choice>
+					</xs:sequence>
+				</xs:restriction>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="引文">
+		<xs:complexType mixed="true">
+			<xs:complexContent mixed="true">
+				<xs:extension base="文段Type">
+					<xs:choice minOccurs="0">
+						<xs:element name="出处">
+							<xs:complexType mixed="true">
+								<xs:choice minOccurs="0" maxOccurs="unbounded">
+									<xs:element ref="标记"/>
+								</xs:choice>
+							</xs:complexType>
+						</xs:element>
+					</xs:choice>
+					<xs:attribute name="xhref" type="xs:anyURI"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="列举项" type="列举Type"/>
+	<xs:simpleType name="列举形式Type">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="disc"/>
+			<xs:enumeration value="square"/>
+			<xs:enumeration value="circle"/>
+			<xs:enumeration value="a"/>
+			<xs:enumeration value="A"/>
+			<xs:enumeration value="i"/>
+			<xs:enumeration value="I"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="列举Type">
+		<xs:sequence>
+			<xs:element name="列举说明" type="文段Type" minOccurs="0"/>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="列举项" maxOccurs="unbounded"/>
+				<xs:element name="项目" maxOccurs="unbounded">
+					<xs:complexType mixed="true">
+						<xs:complexContent mixed="true">
+							<xs:extension base="文段Type"/>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attribute name="形式" type="列举形式Type" use="optional" default="1"/>
+	</xs:complexType>
+	<xs:element name="表格" type="表格Type"/>
+	<xs:complexType name="表格Type">
+		<xs:sequence>
+			<xs:element name="表格标题" type="xs:string" nillable="false"/>
+			<xs:element name="表格描述" type="xs:string" nillable="false" minOccurs="0"/>
+			<xs:element name="表头" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="表格行" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="表格首列" type="文段容器Type" nillable="false" minOccurs="0"/>
+									<xs:element name="表格单元" type="文段容器Type" nillable="false" maxOccurs="unbounded"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="表格体" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="表格行" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="表格首列" type="文段容器Type" nillable="false" minOccurs="0"/>
+									<xs:element name="表格单元" nillable="false" maxOccurs="unbounded">
+										<xs:annotation>
+											<xs:documentation>表格单元的数目与表格项目的相同。</xs:documentation>
+										</xs:annotation>
+										<xs:complexType mixed="true">
+											<xs:complexContent mixed="true">
+												<xs:extension base="表格单元Type"/>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="表格描述" type="xs:string" nillable="false" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="扩展属性"/>
+	</xs:complexType>
+	<xs:complexType name="表格单元Type" mixed="true">
+		<xs:complexContent mixed="true">
+			<xs:extension base="文段容器Type">
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="标记"/>
+				</xs:choice>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:group name="文段">
+		<xs:choice>
+			<xs:element ref="副标题"/>
+			<xs:element ref="代码段"/>
+			<xs:element ref="列举项"/>
+			<xs:element ref="引文"/>
+			<xs:element ref="段落"/>
+			<xs:element ref="表格"/>
+		</xs:choice>
+	</xs:group>
+	<xs:complexType name="文段容器Type" mixed="true">
+		<xs:group ref="文段" minOccurs="0" maxOccurs="unbounded"/>
+	</xs:complexType>
+	<!--文段中标记-->
+	<xs:element name="标记" type="标记Type" abstract="true"/>
+	<xs:complexType name="标记Type" mixed="true"/>
+	<xs:element name="链接" substitutionGroup="标记">
+		<xs:complexType mixed="true">
+			<xs:complexContent mixed="true">
+				<xs:extension base="链接Type">
+					<xs:choice minOccurs="0" maxOccurs="unbounded">
+						<xs:element ref="标记"/>
+					</xs:choice>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="链接Type" mixed="true">
+		<xs:complexContent mixed="true">
+			<xs:extension base="标记Type">
+				<xs:attributeGroup ref="连接属性"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="书签" substitutionGroup="标记">
+		<xs:complexType mixed="true">
+			<xs:complexContent mixed="true">
+				<xs:extension base="标记Type">
+					<xs:sequence minOccurs="0" maxOccurs="unbounded">
+						<xs:element ref="标记"/>
+					</xs:sequence>
+					<xs:attribute name="name" type="xs:ID" use="required"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="代码" type="标记Type" substitutionGroup="标记"/>
+	<xs:element name="省略" substitutionGroup="标记"/>
+	<xs:element name="特殊" substitutionGroup="标记">
+		<xs:complexType mixed="true">
+			<xs:complexContent mixed="true">
+				<xs:extension base="标记Type">
+					<xs:sequence minOccurs="0">
+						<xs:element ref="标记"/>
+					</xs:sequence>
+					<xs:attribute name="类别" type="xs:string" use="required"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="注释" substitutionGroup="标记">
+		<xs:complexType mixed="true">
+			<xs:complexContent mixed="true">
+				<xs:extension base="标记Type">
+					<xs:choice maxOccurs="unbounded">
+						<xs:element ref="段落" maxOccurs="unbounded"/>
+					</xs:choice>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="专名" substitutionGroup="标记">
+		<xs:complexType mixed="true">
+			<xs:complexContent mixed="true">
+				<xs:extension base="标记Type">
+					<xs:sequence minOccurs="0">
+						<xs:element ref="标记"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="引用" substitutionGroup="标记">
+		<xs:complexType mixed="true">
+			<xs:complexContent mixed="true">
+				<xs:extension base="标记Type">
+					<xs:choice minOccurs="0" maxOccurs="unbounded">
+						<xs:element ref="标记"/>
+					</xs:choice>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="着重" substitutionGroup="标记">
+		<xs:complexType mixed="true">
+			<xs:complexContent mixed="true">
+				<xs:extension base="标记Type">
+					<xs:choice minOccurs="0" maxOccurs="unbounded">
+						<xs:element ref="标记"/>
+					</xs:choice>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="词汇" substitutionGroup="标记">
+		<xs:complexType mixed="true">
+			<xs:complexContent mixed="true">
+				<xs:extension base="标记Type">
+					<xs:choice minOccurs="0" maxOccurs="unbounded">
+						<xs:element ref="标记"/>
+					</xs:choice>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="图片" substitutionGroup="标记">
+		<xs:complexType mixed="true">
+			<xs:complexContent mixed="true">
+				<xs:extension base="标记Type">
+					<xs:choice>
+						<xs:element name="说明" type="文段Type" maxOccurs="unbounded"/>
+					</xs:choice>
+					<xs:attributeGroup ref="图片属性"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<!--其它-->
+	<xs:element name="链接组" type="链接组Type"/>
+	<xs:element name="作者" type="xs:string"/>
+	<xs:complexType name="链接组Type">
+		<xs:sequence>
+			<xs:element name="类别" type="xs:string"/>
+			<xs:element ref="链接" maxOccurs="unbounded"/>
+			<xs:element ref="链接组" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="代码段">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:whiteSpace value="preserve"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

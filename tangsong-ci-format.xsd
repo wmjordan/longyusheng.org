@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="common-doc.xsd"/>
+	<xs:element name="唐宋词格律">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="类别" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="名称"/>
+							<xs:element name="词牌" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="名称" maxOccurs="unbounded"/>
+										<xs:element name="正文">
+											<xs:complexType>
+												<xs:sequence maxOccurs="unbounded">
+													<xs:element name="段落" type="段落Type" maxOccurs="unbounded"/>
+													<xs:sequence maxOccurs="unbounded">
+														<xs:element ref="格律" maxOccurs="unbounded"/>
+														<xs:element name="例词" type="链接Type" minOccurs="0" maxOccurs="unbounded"/>
+													</xs:sequence>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element ref="链接" minOccurs="0" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="格律">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="段落Type">
+					<xs:attribute name="说明" type="xs:string" use="required"/>
+					<xs:attribute name="押韵" type="xs:string" use="optional"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

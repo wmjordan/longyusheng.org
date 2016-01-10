@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:文章="http://longyusheng.org/schemas/article" targetNamespace="http://longyusheng.org/schemas/article" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="common-doc.xsd"/>
+	<xs:element name="文档集">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="资料档案" type="文章:资料档案Type" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="资料档案Type">
+		<xs:sequence>
+			<xs:group ref="文章:资料摘要"/>
+			<xs:element name="档案文章" type="文章:档案文章Type" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="archiveID" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>档案编号，用于生成文章的子目录</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="noIndex" type="xs:boolean" default="false">
+			<xs:annotation>
+				<xs:documentation>不生成目录索引</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="档案文章Type">
+		<xs:sequence>
+			<xs:group ref="文章:资料摘要"/>
+			<xs:element ref="文章:正文"/>
+			<xs:element name="相关链接" type="文章:链接组Type" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="fileID" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:group name="资料摘要">
+		<xs:sequence>
+			<xs:element ref="文章:标题"/>
+			<xs:element name="关键字" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="文章:作者" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element ref="文章:概述" minOccurs="0"/>
+			<xs:element ref="文章:说明" minOccurs="0"/>
+			<xs:element ref="文章:附注" minOccurs="0"/>
+			<xs:element ref="文章:著作权" minOccurs="0"/>
+		</xs:sequence>
+	</xs:group>
+	<xs:element name="出处">
+		<xs:complexType mixed="true">
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="文章:标记"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="正文">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:group ref="文章:文段"/>
+				<xs:element name="档案文章" type="文章:档案文章Type"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="结论Type" mixed="false">
+		<xs:complexContent mixed="false">
+			<xs:extension base="文章:文段容器Type"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="概述" type="文章:文段容器Type"/>
+	<xs:element name="说明" type="文章:文段容器Type"/>
+	<xs:element name="附注" type="文章:文段容器Type"/>
+	<xs:element name="著作权" type="文章:段落Type"/>
+</xs:schema>

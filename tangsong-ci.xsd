@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="GB2312"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="common-doc.xsd"/>
+	<xs:element name="名家词选">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="标题"/>
+				<xs:element name="名家词" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="作家">
+								<xs:complexType mixed="true"/>
+							</xs:element>
+							<xs:element name="选本"/>
+							<xs:element name="说明" type="文段容器Type" minOccurs="0"/>
+							<xs:element name="词" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="词牌">
+											<xs:complexType mixed="true">
+												<xs:attribute name="id" type="xs:ID" use="optional"/>
+											</xs:complexType>
+										</xs:element>
+										<xs:sequence maxOccurs="unbounded">
+											<xs:sequence>
+												<xs:element name="题记" minOccurs="0">
+													<xs:complexType mixed="true">
+														<xs:complexContent mixed="true">
+															<xs:extension base="段落Type">
+																<xs:choice minOccurs="0">
+																	<xs:element name="题注" type="段落Type" minOccurs="0"/>
+																</xs:choice>
+															</xs:extension>
+														</xs:complexContent>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="正文">
+													<xs:annotation>
+														<xs:documentation>词选中所采用的版本</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="段落" type="xs:string"/>
+														</xs:sequence>
+														<xs:attribute name="id" type="xs:ID" use="optional"/>
+													</xs:complexType>
+												</xs:element>
+												<xs:element name="别作版本" minOccurs="0">
+													<xs:annotation>
+														<xs:documentation>与正式版本有所出入的版本</xs:documentation>
+													</xs:annotation>
+													<xs:complexType>
+														<xs:sequence>
+															<xs:element name="出处"/>
+															<xs:element name="段落"/>
+														</xs:sequence>
+														<xs:attribute name="id" type="xs:ID"/>
+													</xs:complexType>
+												</xs:element>
+											</xs:sequence>
+											<xs:element name="附录" minOccurs="0" maxOccurs="unbounded">
+												<xs:complexType>
+													<xs:choice maxOccurs="unbounded">
+														<xs:element name="注释">
+															<xs:complexType mixed="true">
+																<xs:choice minOccurs="0" maxOccurs="unbounded">
+																	<xs:element ref="引文"/>
+																	<xs:element ref="标记"/>
+																</xs:choice>
+																<xs:attribute name="关键字" use="required"/>
+															</xs:complexType>
+														</xs:element>
+														<xs:sequence>
+															<xs:element name="出处" type="段落Type"/>
+															<xs:element ref="段落" maxOccurs="unbounded"/>
+														</xs:sequence>
+													</xs:choice>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="id" type="xs:ID" use="required"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

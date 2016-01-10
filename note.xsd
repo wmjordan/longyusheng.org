@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="common-doc.xsd"/>
+	<xs:element name="资料档案">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="索引" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="注释" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="词汇" maxOccurs="unbounded"/>
+										<xs:element name="注解" maxOccurs="unbounded">
+											<xs:complexType mixed="true">
+												<xs:sequence minOccurs="0" maxOccurs="unbounded">
+													<xs:element name="概述" type="段落Type" minOccurs="0"/>
+													<xs:sequence maxOccurs="unbounded">
+														<xs:group ref="标记" minOccurs="0"/>
+														<xs:element ref="引文" minOccurs="0"/>
+													</xs:sequence>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+									<xs:attribute name="id" type="xs:ID" use="optional"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="ID" type="xs:ID" use="required"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

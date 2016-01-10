@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="GB2312"?>
+<文档集 xmlns="http://longyusheng.org/schemas/article" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://longyusheng.org/schemas/article article.xsd">
+	<资料档案 archiveID="help">
+		<档案文章 fileID="404">
+			<标题>没有找到指定的页面</标题>
+			<正文>
+				<段落>在本网站的服务器上没有找到阁下所需的页面。这可能是由于该页面已经被删除，或引用该页面的超级连接拼写有误。您可以尝试下列操作：</段落>
+				<列举项 形式="disc">
+					<项目><链接 xhref="?f=search">使用搜索引擎，查找本网站的资料。</链接></项目>
+					<项目><链接 xhref="?s=root">转到网站主页，从主页开始查找您所需的资料。</链接></项目>
+				</列举项>
+				<段落>如果您愿意，也可以将此情况反馈给网站的制作者。请在下面的“内容”中说明您所需要的内容。</段落>
+				<代码><![CDATA[<fieldset><legend>向给网站制作者提交反馈</legend><form action="http://longyusheng.org/feedback.aspx" method="post">
+<table>
+	<colgroup>
+		<col style="text-align: right; vertical-align: top;">
+	</colgroup>
+	<tr>
+		<td>主题：</td>
+		<td><input type="text" class="text" name="subject" maxlength="64" style="width: 400px;" value="没有找到所需的页面" /></td>
+	</tr>
+	<tr>
+		<td>请辱赐尊名：</td>
+		<td><input type="text" class="text" name="subject" maxlength="64" style="width: 400px;" onfocus="if (this.value == 'longyusheng.org 网友') this.value = '';" value="longyusheng.org 网友" /></td>
+	</tr>
+	<tr>
+		<td>电子邮件地址：</td>
+		<td><input type="text" class="text" name="email" maxlength="256" style="width: 400px;"  />（可选）</td>
+	</tr>
+	<tr>
+		<td>内容：</td>
+		<td><textarea name="content" id="content" style="width: 400px; height: 200px;"></textarea></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><input type="submit" class="button" value="提交反馈" /></td>
+	</tr>
+</table>
+<input type="hidden" id="url" name="url"/>
+<script type="text/javascript">
+$(function(){
+var loc = document.location.href;
+if (loc.indexOf ("/format") != -1) document.location.href = "../cipai/mulu.html";
+else if (loc.indexOf ("/filelecture") != -1) document.location.href = "../cixueshijiang/";
+else {
+$("#url").val (loc);
+$("#content").val (loc);
+}});
+</script>
+</form></fieldset>]]></代码>
+				<段落>如果您希望得到网站制作者的回复，请在上面的表单中提供您的电子邮件地址。</段落>
+			</正文>
+		</档案文章>
+		<档案文章 fileID="feedback">
+			<标题>读者留言</标题>
+			<正文>
+				<段落>非常感谢您对本网站的关注！如果您可通过填写下面的表单，按“提交反馈”按钮，将内容发送给网站的制作者。如果您愿意，请提供电子邮件地址，以便制作者回复。阁下的建议或反馈内容可能会被刊登在本网站的读者留言栏目，如果您不愿意这样做，请在反馈内容中说明。</段落>
+				<段落>部分读者的留言已在<链接 xhref="http://longyusheng.org/redirect.aspx?feedback">读者留言反馈网志</链接>刊登，欢迎查阅。</段落>
+				<段落>除了使用在线反馈系统提交留言之外，您还可以通过电子邮件（邮箱地址：<代码><![CDATA[<input type="text" class="text" value="wmjordan@163.com" readonly="true" />]]></代码>）向网站制作者提供反馈。如果您有更多关于<专名>龙榆生</专名>先生的资料，欢迎您将其提交给本站，与其他读者一起分享。</段落>
+				<段落>
+						<代码><![CDATA[<fieldset><legend>意见反馈表</legend><form action="http://longyusheng.org/feedback.aspx" method="post">
+<table>
+	<colgroup>
+		<col style="text-align: right; vertical-align: top;">
+	</colgroup>
+	<tr>
+		<td>主题：</td>
+		<td><input type="text" class="text" name="subject" maxlength="64" style="width: 400px;" value="关于龙榆生先生纪念网站" /></td>
+	</tr>
+	<tr>
+		<td>请辱赐尊名：</td>
+		<td><input type="text" class="text" name="subject" maxlength="64" style="width: 400px;" onfocus="if (this.value == 'longyusheng.org 网友') this.value = '';" value="longyusheng.org 网友" /></td>
+	</tr>
+	<tr>
+		<td>电子邮件地址：</td>
+		<td><input type="text" class="text" name="email" maxlength="256" style="width: 400px;"  />（可选）</td>
+	</tr>
+	<tr>
+		<td>内容：</td>
+		<td><textarea name="body" style="width: 400px; height: 200px;"></textarea></td>
+	</tr>
+	<tr>
+		<td></td>
+		<td><input type="submit" class="button" value="提交反馈" /></td>
+	</tr>
+</table>
+<input type="hidden" id="url" name="url"/>
+<script type="text/javascript">
+$("#url").val (document.location.href);
+</script>
+</form></fieldset>]]></代码>
+				</段落>
+			</正文>
+			<相关链接>
+				<链接 xhref="http://longyusheng.org/redirect.aspx?feedback">读者留言反馈网志</链接>
+			</相关链接>
+		</档案文章>
+		<档案文章 fileID="thanks">
+			<标题>谢谢您的反馈！</标题>
+			<正文>
+				<段落>您的反馈已经被成功地记录下来，并将发送到网站制作者的电子邮箱。如果您留下了有效的电子邮件地址，将可能收到制作者的回复。</段落>
+				<段落>您可以选择以下操作：</段落>
+				<列举项 形式="disc">
+					<项目><链接 xhref="http://longyusheng.org/redirect.aspx?feedback">浏览读者留言反馈网志</链接></项目>
+					<项目><链接 xhref="?s=root">转到网站首页，继续浏览</链接></项目>
+					<项目><代码><![CDATA[<a href="javascript:window.close ()">关闭本页面，退出网站</a>]]></代码></项目>
+				</列举项>
+			</正文>
+			<相关链接>
+				<链接 xhref="http://longyusheng.org/redirect.aspx?feedback">读者留言反馈网志</链接>
+			</相关链接>
+		</档案文章>
+		<档案文章 fileID="500">
+			<标题>网站程序错误</标题>
+			<正文>
+				<段落>非常抱歉，网站的应用程序在运行过程中遇到了错误，可能无法完成您刚才的请求。如果您愿意，可以点击以下连接<链接 xhref="mailto:wmjordan@163.com?subject=longyusheng.org">使用电子邮件联系网站制作者</链接>，电子邮件地址是<代码><![CDATA[<input type="text" class="text" value="wmjordan@163.com" readonly="true" />]]></代码>。</段落>
+			</正文>
+		</档案文章>
+		<档案文章 fileID="search">
+			<标题>使用搜索引擎检索本站页面</标题>
+			<正文>
+				<段落>您可以使用搜索引擎全文检索《龙榆生先生纪念网站》，查找您需要的内容。请在下面的文本框中输入需要查询的关键字，然后点击“搜索”按钮。</段落>
+				<代码>
+					<fieldset>
+						<legend>使用<a href="http://www.google.com" target="_blank">Google 搜索引擎</a>检索本站：</legend>
+						<form action="http://www.google.cn/search" target="_blank">
+							<div>在《龙榆生先生纪念网站》搜索如下关键字：</div>
+							<div>
+								<input type="text" name="q" class="text" size="31" />
+								<input type="submit" class="button" name="sa" value="搜索" />
+								<input type="hidden" name="hl" value="zh-CN" />
+								<input type="hidden" name="ie" value="zh-CN" />
+								<input type="hidden" name="sitesearch" value="longyusheng.org" />
+							</div>
+						</form>
+						</fieldset>
+						<!-- <fieldset><legend>使用<a href="http://www.baidu.com" target="_blank">百度搜索引擎</a>检索本站：</legend><form action="http://www.baidu.com/baidu" target="_blank" method="get">
+<span>搜索关键字：</span><input name="word" class="text" size="30" maxlength="100">
+<input type="submit" class="button" value="搜索">
+<input name="tn" type="hidden" value="bds">
+<input name="cl" type="hidden" value="3">
+<input name="ct" type="hidden" value="2097152">
+<input name="si" type="hidden" value="longyusheng.org">
+</form></fieldset> -->
+				</代码>
+			</正文>
+		</档案文章>
+
+	</资料档案>
+</文档集>
