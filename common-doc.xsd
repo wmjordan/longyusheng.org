@@ -92,8 +92,14 @@
 		<xs:choice minOccurs="0" maxOccurs="unbounded">
 			<xs:element ref="引文"/>
 			<xs:element ref="标记"/>
+			<xs:element name="引用附注">
+				<xs:complexType>
+					<xs:attribute name="id" type="xs:positiveInteger"/>
+				</xs:complexType>
+			</xs:element>
 		</xs:choice>
 		<xs:attribute name="缩进" type="xs:boolean" default="true"/>
+		<xs:attribute name="id" type="xs:positiveInteger" use="optional"/>
 	</xs:complexType>
 	<xs:element name="副标题">
 		<xs:complexType mixed="true">

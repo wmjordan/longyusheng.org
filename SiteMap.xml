@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="GB2312"?>
+<siteMap xsi:noNamespaceSchemaLocation="SiteMap.xsd" id="root" url="index.html" name="龙榆生先生词学著作选">
+	<siteMap id="tangsongci-index" url="tangsongci/index.html" name="唐宋名家词选">
+		<siteMap id="tangsongci-index1" url="tangsongci/mulu.html" name="目录">
+			<siteMap id="tangsongci-pages" name="唐宋名家词选" display="false"/>
+		</siteMap>
+		<siteMap id="tangsongci-index2" url="tangsongci/pinyin.html" name="姓氏读音排序目录"/>
+		<siteMap id="tangsongci-index3" url="tangsongci/tongji.html" name="词作数目排序目录"/>
+		<siteMap id="tangsongci-biblio" url="tangsongci/ciren.html" name="词人传记与集评">
+			<siteMap id="tangsongci-biblio-pages" name="唐宋名词家简传" display="false"/>
+		</siteMap>
+		<siteMap id="tangsongci" display="false" name="相关文章"/>
+	</siteMap>
+	<siteMap id="jindaici-index" url="jindaici/index.html" name="近三百年名家词选">
+		<siteMap id="jindaici-index1" url="jindaici/mulu.html" name="目录">
+			<siteMap id="jindaici-pages" name="近三百年名家词选" display="false"/>
+		</siteMap>
+		<siteMap id="jindaici-index2" url="jindaici/pinyin.html" name="姓氏读音排序目录"/>
+		<siteMap id="jindaici-index3" url="jindaici/tongji.html" name="词作数目排序目录"/>
+		<siteMap id="jindaici-biblio" url="jindaici/ciren.html" name="词人传记与集评">
+			<siteMap id="jindaici-biblio-pages" name="近三百年名词家简传" display="false"/>
+		</siteMap>
+		<siteMap id="jindaici" display="false" name="相关文章"/>
+	</siteMap>
+	<siteMap id="cipai-index" url="cipai/index.html" name="唐宋词格律">
+		<siteMap id="gl-mulu" url="cipai/mulu.html" name="目录">
+			<siteMap id="ci-format" name="唐宋词格律" display="false"/>
+		</siteMap>
+		<siteMap id="gl-pinyin" url="cipai/pinyin.html" name="词牌读音排序目录"/>
+		<siteMap id="gl-zishu" url="cipai/zishu.html" name="词牌字数排序目录"/>
+		<siteMap id="cipai" display="false" name="唐宋词格律"/>
+	</siteMap>
+	<siteMap id="cixueshijiang-mulu" url="cixueshijiang/index.html" name="词学十讲">
+		<siteMap id="cixueshijiang" display="false" name="词学十讲"/>
+	</siteMap>
+	<siteMap id="zhongguoyunwenshi-mulu" url="zhongguoyunwenshi/index.html" name="中国韵文史">
+		<siteMap id="zhongguoyunwenshi" display="false" name="中国韵文史"/>
+	</siteMap>
+	<siteMap id="xintigequ-mulu" url="xintigequ/index.html" name="龙榆生新体歌曲选">
+		<siteMap id="xintigequ" display="false" name="新体歌曲选"/>
+	</siteMap>
+	<siteMap id="lunwen" display="false" name="词学论文集"/>
+	<siteMap id="zawen-mulu" url="zawen/index.html" name="龙榆生杂文选">
+		<siteMap id="zawen" display="false" name="杂文"/>
+	</siteMap>
+	<siteMap id="about" url="about\gy-shiyongshuoming.html" name="使用说明"/>
+	<siteMap id="jinian-mulu" url="jinian/index.html" name="纪念专辑">
+		<siteMap id="jinian" display="false" name="纪念专辑"/>
+	</siteMap>
+	<siteMap id="题跋" display="false" name="题跋"/>
+	<siteMap id="注释" display="false" name="注释"/>
+	<siteMap id="help" display="false" name="其他"/>
+</siteMap>

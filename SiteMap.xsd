@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="GB2312"?>
+<!-- edited with XMLSpy v2007 (http://www.altova.com) by WMJ (WMJ) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="siteMap">
+		<xs:complexType mixed="true">
+			<xs:complexContent mixed="true">
+				<xs:extension base="siteMapType"/>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="siteMapType" mixed="true">
+		<xs:sequence minOccurs="0">
+			<xs:element ref="siteMap" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="relatedNode" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:restriction base="siteMapType">
+							<xs:attribute name="id" type="xs:ID" use="required"/>
+							<xs:attribute name="url" type="xs:anyURI" use="required"/>
+							<xs:attribute name="display" type="xs:boolean" fixed="true"/>
+						</xs:restriction>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:ID"/>
+		<xs:attribute name="name" type="xs:token" use="required"/>
+		<xs:attribute name="url" type="xs:anyURI"/>
+		<xs:attribute name="display" type="xs:boolean"/>
+	</xs:complexType>
+</xs:schema>

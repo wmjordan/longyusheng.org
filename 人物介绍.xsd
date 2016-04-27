@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:人物="http://lonyusheng.org/schemas/bibliography" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://lonyusheng.org/schemas/bibliography" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="common-doc.xsd"/>
+	<xs:element name="人物介绍">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="作家" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:sequence>
+								<xs:element name="姓名" maxOccurs="unbounded">
+									<xs:annotation>
+										<xs:documentation>更多的姓名则为别名</xs:documentation>
+									</xs:annotation>
+									<xs:complexType mixed="true">
+										<xs:attribute name="说明" use="optional">
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="姓名"/>
+													<xs:enumeration value="别名"/>
+													<xs:enumeration value="原名"/>
+													<xs:enumeration value="表字"/>
+													<xs:enumeration value="号"/>
+													<xs:enumeration value="谥号"/>
+													<xs:enumeration value="译名"/>
+													<xs:enumeration value="其他"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:attribute>
+									</xs:complexType>
+								</xs:element>
+							</xs:sequence>
+							<xs:element name="生卒" minOccurs="0">
+								<xs:complexType>
+									<xs:attribute name="生" type="xs:string" use="optional"/>
+									<xs:attribute name="卒" type="xs:string" use="optional"/>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="朝代" minOccurs="0"/>
+							<xs:element name="介绍">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:group ref="人物:段落" maxOccurs="unbounded"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="集评" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="出处"/>
+										<xs:sequence maxOccurs="unbounded">
+											<xs:element name="人物" minOccurs="0"/>
+											<xs:element ref="人物:段落" maxOccurs="unbounded"/>
+										</xs:sequence>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="性别" use="optional" default="男">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="男"/>
+									<xs:enumeration value="女"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:group name="段落">
+		<xs:choice>
+			<xs:element ref="人物:段落"/>
+			<xs:element ref="人物:引文"/>
+			<xs:element ref="人物:列举项"/>
+		</xs:choice>
+	</xs:group>
+</xs:schema>
