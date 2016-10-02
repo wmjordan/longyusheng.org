@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="GB2312"?>
-<siteMap xsi:noNamespaceSchemaLocation="SiteMap.xsd" id="root" url="index.html" name="龙榆生先生词学著作选">
+<siteMap xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="SiteMap.xsd" id="root" url="index.html" name="龙榆生先生词学著作选">
 	<siteMap id="tangsongci-index" url="tangsongci/index.html" name="唐宋名家词选">
 		<siteMap id="tangsongci-index1" url="tangsongci/mulu.html" name="目录">
 			<siteMap id="tangsongci-pages" name="唐宋名家词选" display="false"/>
