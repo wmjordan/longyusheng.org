@@ -16,8 +16,9 @@
 												<xs:sequence minOccurs="0" maxOccurs="unbounded">
 													<xs:element name="概述" type="段落Type" minOccurs="0"/>
 													<xs:sequence maxOccurs="unbounded">
-														<xs:group ref="标记" minOccurs="0"/>
+														<xs:element ref="标记" minOccurs="0"/>
 														<xs:element ref="引文" minOccurs="0"/>
+														<xs:element ref="段落" minOccurs="0"/>
 													</xs:sequence>
 												</xs:sequence>
 											</xs:complexType>

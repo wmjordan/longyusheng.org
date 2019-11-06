@@ -343,6 +343,21 @@
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
+	<xs:element name="读音" substitutionGroup="标记">
+		<xs:complexType mixed="true">
+			<xs:complexContent mixed="true">
+				<xs:extension base="标记Type">
+					<xs:sequence minOccurs="0">
+						<xs:element ref="标记"/>
+					</xs:sequence>
+					<xs:attribute name="字符" type="xs:string" use="optional"/>
+					<xs:attribute name="国音" type="xs:string" use="optional"/>
+					<xs:attribute name="粤音" type="xs:string" use="optional"/>
+					<xs:attribute name="国粤音" type="xs:string" use="optional"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
 	<!--其它-->
 	<xs:element name="链接组" type="链接组Type"/>
 	<xs:element name="作者" type="xs:string"/>
