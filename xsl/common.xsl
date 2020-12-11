@@ -41,24 +41,9 @@
 	<xsl:template match="Ê¡ÂÔ">
 		<span style="color: #999999" title="´Ë´¦½ÏÔ­ÊéÊ¡ÂÔÈô¸É×Ö">¡­¡­</span>
 	</xsl:template>
-	<!-- <xsl:template match="¶ÁÒô">
-		<xsl:if test="@×Ö·û">
-			<xsl:value-of select="@×Ö·û"/>
-			<xsl:text>£¬</xsl:text>
-		</xsl:if>
-		<sub>
-			<xsl:for-each select="@¹úÒô|@ÔÁÒô|@¹úÔÁÒô">
-				<xsl:if test="position() > 1">
-					<xsl:text>£¬</xsl:text>
-				</xsl:if>
-				<xsl:value-of select="name()"/>
-				<xsl:value-of select="."/>
-			</xsl:for-each>
-		</sub>
-	</xsl:template> -->
 	<xsl:template match="¶ÁÒô">
-		<xsl:if test="@×Ö·û">
-			<span><xsl:value-of select="@×Ö·û"/></span>
+		<xsl:if test="@×Ö·û|text()">
+			<span><xsl:value-of select="@×Ö·û|text()"/></span>
 		</xsl:if>
 		<sup class="reading-note">
 			<xsl:choose>
