@@ -609,7 +609,7 @@
 					</xsl:call-template>
 				</xsl:attribute>
 				<u>听琴斋主人</u>
-				</a>制作（更新于<xsl:value-of select="$Date"/>）<br />龙榆生先生纪念网站：<a href="http://longyusheng.org" target="website">longyusheng.org</a>（<a href="http://www.miibeian.gov.cn/" target="_blank">粤ICP备15040392号</a>）</div>
+				</a>制作（更新于<xsl:value-of select="$Date"/>）<br />龙榆生先生纪念网站：<a href="http://longyusheng.org" target="website">longyusheng.org</a>（<a href="http://beian.miit.gov.cn/" target="_blank">粤ICP备15040392号</a>）</div>
 	</xsl:template>
 	<xsl:template name="copyrightText"/>
 </xsl:stylesheet>
