@@ -1,35 +1,35 @@
-<?xml version="1.0" encoding="GB2312"?>
+<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
-	<xs:attributeGroup name="Œƒ∂Œ¿‡±">
+	<xs:attributeGroup name="ÊñáÊÆµÁ±ªÂà´">
 		<xs:annotation>
-			<xs:documentation>“˝”√Œƒ∂Œ¿‡±</xs:documentation>
+			<xs:documentation>ÂºïÁî®ÊñáÊÆµÁ±ªÂà´</xs:documentation>
 		</xs:annotation>
-		<xs:attribute name="¿‡±">
+		<xs:attribute name="Á±ªÂà´">
 			<xs:simpleType>
 				<xs:restriction base="xs:string">
-					<xs:enumeration value="Œƒ∂Œ"/>
-					<xs:enumeration value=" ´¥ "/>
-					<xs:enumeration value="≥Ã–Ú"/>
+					<xs:enumeration value="ÊñáÊÆµ"/>
+					<xs:enumeration value="ËØóËØç"/>
+					<xs:enumeration value="Á®ãÂ∫è"/>
 				</xs:restriction>
 			</xs:simpleType>
 		</xs:attribute>
 	</xs:attributeGroup>
-	<xs:attributeGroup name="Œƒ∂Œ–‘÷ ">
+	<xs:attributeGroup name="ÊñáÊÆµÊÄßË¥®">
 		<xs:annotation>
-			<xs:documentation>Ãÿ ‚‘™Àÿ–‘÷ </xs:documentation>
+			<xs:documentation>ÁâπÊÆäÂÖÉÁ¥†ÊÄßË¥®</xs:documentation>
 		</xs:annotation>
-		<xs:attribute name="–‘÷ ">
+		<xs:attribute name="ÊÄßË¥®">
 			<xs:simpleType>
 				<xs:restriction base="xs:NMTOKEN">
-					<xs:enumeration value="◊≈÷ÿ"/>
-					<xs:enumeration value="“˝”√"/>
-					<xs:enumeration value="◊®√˚"/>
-					<xs:enumeration value="¥˙¬Î"/>
+					<xs:enumeration value="ÁùÄÈáç"/>
+					<xs:enumeration value="ÂºïÁî®"/>
+					<xs:enumeration value="‰∏ìÂêç"/>
+					<xs:enumeration value="‰ª£Á†Å"/>
 				</xs:restriction>
 			</xs:simpleType>
 		</xs:attribute>
 	</xs:attributeGroup>
-	<xs:attributeGroup name="Õº∆¨ Ù–‘">
+	<xs:attributeGroup name="ÂõæÁâáÂ±ûÊÄß">
 		<xs:attribute name="canEnlarge" type="xs:boolean" use="optional" default="false"/>
 		<xs:attribute name="placement" use="optional">
 			<xs:simpleType>
@@ -45,7 +45,7 @@
 		<xs:attribute name="src" type="xs:anyURI" use="required"/>
 		<xs:attribute name="href" type="xs:anyURI" use="optional"/>
 	</xs:attributeGroup>
-	<xs:attributeGroup name="¡¨Ω” Ù–‘">
+	<xs:attributeGroup name="ËøûÊé•Â±ûÊÄß">
 		<xs:attribute name="xhref" type="xs:anyURI" use="required"/>
 		<xs:attribute name="xtitle" type="xs:string" use="optional"/>
 		<xs:attribute name="xtarget" type="xs:Name" use="optional"/>
@@ -61,68 +61,76 @@
 		</xs:attribute>
 		<xs:attribute name="id" type="xs:ID" use="optional"/>
 	</xs:attributeGroup>
-	<xs:attributeGroup name="¿©’π Ù–‘">
+	<xs:attributeGroup name="Êâ©Â±ïÂ±ûÊÄß">
 		<xs:anyAttribute namespace="##any"/>
 	</xs:attributeGroup>
-	<!--Œƒ∂Œ-->
-	<xs:complexType name="Œƒ∂ŒType" mixed="true">
+	<!--ÊñáÊÆµ-->
+	<xs:complexType name="ÊñáÊÆµType" mixed="true">
 		<xs:choice minOccurs="0" maxOccurs="unbounded">
-			<xs:element ref="±Íº«"/>
+			<xs:element ref="Ê†áËÆ∞"/>
 		</xs:choice>
 	</xs:complexType>
-	<xs:element name="±ÍÃ‚">
+	<xs:element name="Ê†áÈ¢ò">
 		<xs:complexType>
 			<xs:complexContent>
-				<xs:extension base="±ÍÃ‚Type"/>
+				<xs:extension base="Ê†áÈ¢òType"/>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:complexType name="±ÍÃ‚Type" mixed="true">
+	<xs:complexType name="Ê†áÈ¢òType" mixed="true">
 		<xs:sequence minOccurs="0">
-			<xs:element name="√ºÃ‚" type="Œƒ∂ŒType" minOccurs="0"/>
-			<xs:element name="∏±Ã‚" type="Œƒ∂ŒType" minOccurs="0"/>
+			<xs:element name="ÁúâÈ¢ò" type="ÊñáÊÆµType" minOccurs="0"/>
+			<xs:element name="ÂâØÈ¢ò" type="ÊñáÊÆµType" minOccurs="0"/>
 			<xs:choice minOccurs="0" maxOccurs="unbounded">
-				<xs:element ref="±Íº«" minOccurs="0"/>
+				<xs:element ref="Ê†áËÆ∞" minOccurs="0"/>
 			</xs:choice>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:ID"/>
 	</xs:complexType>
-	<xs:element name="∂Œ¬‰" type="∂Œ¬‰Type"/>
-	<xs:complexType name="∂Œ¬‰Type" mixed="true">
+	<xs:element name="ÊÆµËêΩ" type="ÊÆµËêΩType"/>
+	<xs:element name="Â∞èÊ†áÈ¢ò" type="ÊÆµËêΩType"/>
+	<xs:complexType name="ÊÆµËêΩType" mixed="true">
 		<xs:choice minOccurs="0" maxOccurs="unbounded">
-			<xs:element ref="“˝Œƒ"/>
-			<xs:element ref="±Íº«"/>
-			<xs:element name="“˝”√∏Ω◊¢">
+			<xs:element ref="ÂºïÊñá"/>
+			<xs:element ref="Ê†áËÆ∞"/>
+			<xs:element ref="Ê≥®Èáä"/>
+			<xs:element name="ÂºïÁî®ÈôÑÊ≥®">
 				<xs:complexType>
 					<xs:attribute name="id" type="xs:positiveInteger"/>
 				</xs:complexType>
 			</xs:element>
+			<xs:element name="ÂÖ≥ÈîÆÂ≠ó">
+				<xs:complexType>
+					<xs:attribute name="url" type="xs:anyURI"/>
+					<xs:attribute name="ËØ¥Êòé" type="xs:string"/>
+				</xs:complexType>
+			</xs:element>
 		</xs:choice>
-		<xs:attribute name="ÀıΩ¯" type="xs:boolean" default="true"/>
+		<xs:attribute name="Áº©Ëøõ" type="xs:boolean" default="true"/>
 		<xs:attribute name="id" type="xs:positiveInteger" use="optional"/>
 	</xs:complexType>
-	<xs:element name="∏±±ÍÃ‚">
+	<xs:element name="ÂâØÊ†áÈ¢ò">
 		<xs:complexType mixed="true">
 			<xs:complexContent mixed="true">
-				<xs:restriction base="±ÍÃ‚Type">
+				<xs:restriction base="Ê†áÈ¢òType">
 					<xs:sequence minOccurs="0">
 						<xs:choice minOccurs="0" maxOccurs="unbounded">
-							<xs:element ref="±Íº«" minOccurs="0"/>
+							<xs:element ref="Ê†áËÆ∞" minOccurs="0"/>
 						</xs:choice>
 					</xs:sequence>
 				</xs:restriction>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="“˝Œƒ">
+	<xs:element name="ÂºïÊñá">
 		<xs:complexType mixed="true">
 			<xs:complexContent mixed="true">
-				<xs:extension base="Œƒ∂ŒType">
+				<xs:extension base="ÊñáÊÆµType">
 					<xs:choice minOccurs="0">
-						<xs:element name="≥ˆ¥¶">
+						<xs:element name="Âá∫Â§Ñ">
 							<xs:complexType mixed="true">
 								<xs:choice minOccurs="0" maxOccurs="unbounded">
-									<xs:element ref="±Íº«"/>
+									<xs:element ref="Ê†áËÆ∞"/>
 								</xs:choice>
 							</xs:complexType>
 						</xs:element>
@@ -132,8 +140,8 @@
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="¡–æŸœÓ" type="¡–æŸType"/>
-	<xs:simpleType name="¡–æŸ–Œ ΩType">
+	<xs:element name="Âàó‰∏æÈ°π" type="Âàó‰∏æType"/>
+	<xs:simpleType name="Âàó‰∏æÂΩ¢ÂºèType">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="1"/>
 			<xs:enumeration value="disc"/>
@@ -145,55 +153,55 @@
 			<xs:enumeration value="I"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:complexType name="¡–æŸType">
+	<xs:complexType name="Âàó‰∏æType">
 		<xs:sequence>
-			<xs:element name="¡–æŸÀµ√˜" type="Œƒ∂ŒType" minOccurs="0"/>
+			<xs:element name="Âàó‰∏æËØ¥Êòé" type="ÊñáÊÆµType" minOccurs="0"/>
 			<xs:choice maxOccurs="unbounded">
-				<xs:element ref="¡–æŸœÓ" maxOccurs="unbounded"/>
-				<xs:element name="œÓƒø" maxOccurs="unbounded">
+				<xs:element ref="Âàó‰∏æÈ°π" maxOccurs="unbounded"/>
+				<xs:element name="È°πÁõÆ" maxOccurs="unbounded">
 					<xs:complexType mixed="true">
 						<xs:complexContent mixed="true">
-							<xs:extension base="Œƒ∂ŒType"/>
+							<xs:extension base="ÊñáÊÆµType"/>
 						</xs:complexContent>
 					</xs:complexType>
 				</xs:element>
 			</xs:choice>
 		</xs:sequence>
-		<xs:attribute name="–Œ Ω" type="¡–æŸ–Œ ΩType" use="optional" default="1"/>
+		<xs:attribute name="ÂΩ¢Âºè" type="Âàó‰∏æÂΩ¢ÂºèType" use="optional" default="1"/>
 	</xs:complexType>
-	<xs:element name="±Ì∏Ò" type="±Ì∏ÒType"/>
-	<xs:complexType name="±Ì∏ÒType">
+	<xs:element name="Ë°®Ê†º" type="Ë°®Ê†ºType"/>
+	<xs:complexType name="Ë°®Ê†ºType">
 		<xs:sequence>
-			<xs:element name="±Ì∏Ò±ÍÃ‚" type="xs:string" nillable="false"/>
-			<xs:element name="±Ì∏Ò√Ë ˆ" type="xs:string" nillable="false" minOccurs="0"/>
-			<xs:element name="±ÌÕ∑" minOccurs="0">
+			<xs:element name="Ë°®Ê†ºÊ†áÈ¢ò" type="xs:string" nillable="false"/>
+			<xs:element name="Ë°®Ê†ºÊèèËø∞" type="xs:string" nillable="false" minOccurs="0"/>
+			<xs:element name="Ë°®Â§¥" minOccurs="0">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="±Ì∏Ò––" maxOccurs="unbounded">
+						<xs:element name="Ë°®Ê†ºË°å" maxOccurs="unbounded">
 							<xs:complexType>
 								<xs:sequence>
-									<xs:element name="±Ì∏Ò ◊¡–" type="Œƒ∂Œ»›∆˜Type" nillable="false" minOccurs="0"/>
-									<xs:element name="±Ì∏Òµ•‘™" type="Œƒ∂Œ»›∆˜Type" nillable="false" maxOccurs="unbounded"/>
+									<xs:element name="Ë°®Ê†ºÈ¶ñÂàó" type="ÊñáÊÆµÂÆπÂô®Type" nillable="false" minOccurs="0"/>
+									<xs:element name="Ë°®Ê†ºÂçïÂÖÉ" type="ÊñáÊÆµÂÆπÂô®Type" nillable="false" maxOccurs="unbounded"/>
 								</xs:sequence>
 							</xs:complexType>
 						</xs:element>
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="±Ì∏ÒÃÂ" maxOccurs="unbounded">
+			<xs:element name="Ë°®Ê†º‰Ωì" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:sequence>
-						<xs:element name="±Ì∏Ò––" maxOccurs="unbounded">
+						<xs:element name="Ë°®Ê†ºË°å" maxOccurs="unbounded">
 							<xs:complexType>
 								<xs:sequence>
-									<xs:element name="±Ì∏Ò ◊¡–" type="Œƒ∂Œ»›∆˜Type" nillable="false" minOccurs="0"/>
-									<xs:element name="±Ì∏Òµ•‘™" nillable="false" maxOccurs="unbounded">
+									<xs:element name="Ë°®Ê†ºÈ¶ñÂàó" type="ÊñáÊÆµÂÆπÂô®Type" nillable="false" minOccurs="0"/>
+									<xs:element name="Ë°®Ê†ºÂçïÂÖÉ" nillable="false" maxOccurs="unbounded">
 										<xs:annotation>
-											<xs:documentation>±Ì∏Òµ•‘™µƒ ˝ƒø”Î±Ì∏ÒœÓƒøµƒœ‡Õ¨°£</xs:documentation>
+											<xs:documentation>Ë°®Ê†ºÂçïÂÖÉÁöÑÊï∞ÁõÆ‰∏éË°®Ê†ºÈ°πÁõÆÁöÑÁõ∏Âêå„ÄÇ</xs:documentation>
 										</xs:annotation>
 										<xs:complexType mixed="true">
 											<xs:complexContent mixed="true">
-												<xs:extension base="±Ì∏Òµ•‘™Type"/>
+												<xs:extension base="Ë°®Ê†ºÂçïÂÖÉType"/>
 											</xs:complexContent>
 										</xs:complexType>
 									</xs:element>
@@ -203,172 +211,186 @@
 					</xs:sequence>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="±Ì∏Ò√Ë ˆ" type="xs:string" nillable="false" minOccurs="0"/>
+			<xs:element name="Ë°®Ê†ºÊèèËø∞" type="xs:string" nillable="false" minOccurs="0"/>
 		</xs:sequence>
-		<xs:attributeGroup ref="¿©’π Ù–‘"/>
+		<xs:attributeGroup ref="Êâ©Â±ïÂ±ûÊÄß"/>
 	</xs:complexType>
-	<xs:complexType name="±Ì∏Òµ•‘™Type" mixed="true">
+	<xs:complexType name="Ë°®Ê†ºÂçïÂÖÉType" mixed="true">
 		<xs:complexContent mixed="true">
-			<xs:extension base="Œƒ∂Œ»›∆˜Type">
+			<xs:extension base="ÊñáÊÆµÂÆπÂô®Type">
 				<xs:choice minOccurs="0" maxOccurs="unbounded">
-					<xs:element ref="±Íº«"/>
+					<xs:element ref="Ê†áËÆ∞"/>
 				</xs:choice>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:group name="Œƒ∂Œ">
+	<xs:group name="ÊñáÊÆµ">
 		<xs:choice>
-			<xs:element ref="∏±±ÍÃ‚"/>
-			<xs:element ref="¥˙¬Î∂Œ"/>
-			<xs:element ref="¡–æŸœÓ"/>
-			<xs:element ref="“˝Œƒ"/>
-			<xs:element ref="∂Œ¬‰"/>
-			<xs:element ref="±Ì∏Ò"/>
+			<xs:element ref="ÂâØÊ†áÈ¢ò"/>
+			<xs:element ref="‰ª£Á†ÅÊÆµ"/>
+			<xs:element ref="Âàó‰∏æÈ°π"/>
+			<xs:element ref="ÂºïÊñá"/>
+			<xs:element ref="ÊÆµËêΩ"/>
+			<xs:element ref="Â∞èÊ†áÈ¢ò"/>
+			<xs:element ref="Ë°®Ê†º"/>
 		</xs:choice>
 	</xs:group>
-	<xs:complexType name="Œƒ∂Œ»›∆˜Type" mixed="true">
-		<xs:group ref="Œƒ∂Œ" minOccurs="0" maxOccurs="unbounded"/>
+	<xs:complexType name="ÊñáÊÆµÂÆπÂô®Type" mixed="true">
+		<xs:group ref="ÊñáÊÆµ" minOccurs="0" maxOccurs="unbounded"/>
 	</xs:complexType>
-	<!--Œƒ∂Œ÷–±Íº«-->
-	<xs:element name="±Íº«" type="±Íº«Type" abstract="true"/>
-	<xs:complexType name="±Íº«Type" mixed="true"/>
-	<xs:element name="¡¥Ω”" substitutionGroup="±Íº«">
+	<!--ÊñáÊÆµ‰∏≠Ê†áËÆ∞-->
+	<xs:element name="Ê†áËÆ∞" type="Ê†áËÆ∞Type" abstract="true"/>
+	<xs:complexType name="Ê†áËÆ∞Type" mixed="true"/>
+	<xs:element name="ÈìæÊé•" substitutionGroup="Ê†áËÆ∞">
 		<xs:complexType mixed="true">
 			<xs:complexContent mixed="true">
-				<xs:extension base="¡¥Ω”Type">
+				<xs:extension base="ÈìæÊé•Type">
 					<xs:choice minOccurs="0" maxOccurs="unbounded">
-						<xs:element ref="±Íº«"/>
+						<xs:element ref="Ê†áËÆ∞"/>
 					</xs:choice>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:complexType name="¡¥Ω”Type" mixed="true">
+	<xs:complexType name="ÈìæÊé•Type" mixed="true">
 		<xs:complexContent mixed="true">
-			<xs:extension base="±Íº«Type">
-				<xs:attributeGroup ref="¡¨Ω” Ù–‘"/>
+			<xs:extension base="Ê†áËÆ∞Type">
+				<xs:attributeGroup ref="ËøûÊé•Â±ûÊÄß"/>
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
-	<xs:element name=" È«©" substitutionGroup="±Íº«">
+	<xs:element name="‰π¶Á≠æ" substitutionGroup="Ê†áËÆ∞">
 		<xs:complexType mixed="true">
 			<xs:complexContent mixed="true">
-				<xs:extension base="±Íº«Type">
+				<xs:extension base="Ê†áËÆ∞Type">
 					<xs:sequence minOccurs="0" maxOccurs="unbounded">
-						<xs:element ref="±Íº«"/>
+						<xs:element ref="Ê†áËÆ∞"/>
 					</xs:sequence>
 					<xs:attribute name="name" type="xs:ID" use="required"/>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="¥˙¬Î" type="±Íº«Type" substitutionGroup="±Íº«"/>
-	<xs:element name=" °¬‘" substitutionGroup="±Íº«"/>
-	<xs:element name="Ãÿ ‚" substitutionGroup="±Íº«">
+	<xs:element name="‰ª£Á†Å" type="Ê†áËÆ∞Type" substitutionGroup="Ê†áËÆ∞"/>
+	<xs:element name="ÁúÅÁï•" substitutionGroup="Ê†áËÆ∞"/>
+	<xs:element name="ÁâπÊÆä" substitutionGroup="Ê†áËÆ∞">
 		<xs:complexType mixed="true">
 			<xs:complexContent mixed="true">
-				<xs:extension base="±Íº«Type">
+				<xs:extension base="Ê†áËÆ∞Type">
 					<xs:sequence minOccurs="0">
-						<xs:element ref="±Íº«"/>
+						<xs:element ref="Ê†áËÆ∞"/>
 					</xs:sequence>
-					<xs:attribute name="¿‡±" type="xs:string" use="required"/>
+					<xs:attribute name="Á±ªÂà´" type="xs:string" use="required"/>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="◊¢ Õ" substitutionGroup="±Íº«">
+	<xs:element name="Ê≥®Èáä" substitutionGroup="Ê†áËÆ∞">
 		<xs:complexType mixed="true">
 			<xs:complexContent mixed="true">
-				<xs:extension base="±Íº«Type">
-					<xs:choice maxOccurs="unbounded">
-						<xs:element ref="∂Œ¬‰" maxOccurs="unbounded"/>
+				<xs:extension base="Ê†áËÆ∞Type">
+					<xs:choice minOccurs="0" maxOccurs="unbounded">
+						<xs:element ref="Ê†áËÆ∞" maxOccurs="unbounded"/>
+						<xs:element ref="ÊÆµËêΩ" maxOccurs="unbounded"/>
 					</xs:choice>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="◊®√˚" substitutionGroup="±Íº«">
+	<xs:element name="‰∏ìÂêç" substitutionGroup="Ê†áËÆ∞">
 		<xs:complexType mixed="true">
 			<xs:complexContent mixed="true">
-				<xs:extension base="±Íº«Type">
+				<xs:extension base="Ê†áËÆ∞Type">
 					<xs:sequence minOccurs="0">
-						<xs:element ref="±Íº«"/>
+						<xs:element ref="Ê†áËÆ∞"/>
 					</xs:sequence>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="“˝”√" substitutionGroup="±Íº«">
+	<xs:element name="ÂºïÁî®" substitutionGroup="Ê†áËÆ∞">
 		<xs:complexType mixed="true">
 			<xs:complexContent mixed="true">
-				<xs:extension base="±Íº«Type">
+				<xs:extension base="Ê†áËÆ∞Type">
 					<xs:choice minOccurs="0" maxOccurs="unbounded">
-						<xs:element ref="±Íº«"/>
+						<xs:element ref="Ê†áËÆ∞"/>
 					</xs:choice>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="◊≈÷ÿ" substitutionGroup="±Íº«">
+	<xs:element name="ÁùÄÈáç" substitutionGroup="Ê†áËÆ∞">
 		<xs:complexType mixed="true">
 			<xs:complexContent mixed="true">
-				<xs:extension base="±Íº«Type">
+				<xs:extension base="Ê†áËÆ∞Type">
 					<xs:choice minOccurs="0" maxOccurs="unbounded">
-						<xs:element ref="±Íº«"/>
+						<xs:element ref="Ê†áËÆ∞"/>
 					</xs:choice>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="¥ ª„" substitutionGroup="±Íº«">
+	<xs:element name="ÂºïÁî®ÈôÑÊ≥®" substitutionGroup="Ê†áËÆ∞">
 		<xs:complexType mixed="true">
 			<xs:complexContent mixed="true">
-				<xs:extension base="±Íº«Type">
+				<xs:extension base="Ê†áËÆ∞Type">
 					<xs:choice minOccurs="0" maxOccurs="unbounded">
-						<xs:element ref="±Íº«"/>
+						<xs:element ref="Ê†áËÆ∞"/>
+					</xs:choice>
+					<xs:attribute name="id" use="optional"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="ËØçÊ±á" substitutionGroup="Ê†áËÆ∞">
+		<xs:complexType mixed="true">
+			<xs:complexContent mixed="true">
+				<xs:extension base="Ê†áËÆ∞Type">
+					<xs:choice minOccurs="0" maxOccurs="unbounded">
+						<xs:element ref="Ê†áËÆ∞"/>
 					</xs:choice>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="Õº∆¨" substitutionGroup="±Íº«">
+	<xs:element name="ÂõæÁâá" substitutionGroup="Ê†áËÆ∞">
 		<xs:complexType mixed="true">
 			<xs:complexContent mixed="true">
-				<xs:extension base="±Íº«Type">
+				<xs:extension base="Ê†áËÆ∞Type">
 					<xs:choice>
-						<xs:element name="Àµ√˜" type="Œƒ∂ŒType" maxOccurs="unbounded"/>
+						<xs:element name="ËØ¥Êòé" type="ÊñáÊÆµType" maxOccurs="unbounded"/>
 					</xs:choice>
-					<xs:attributeGroup ref="Õº∆¨ Ù–‘"/>
+					<xs:attributeGroup ref="ÂõæÁâáÂ±ûÊÄß"/>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="∂¡“Ù" substitutionGroup="±Íº«">
+	<xs:element name="ËØªÈü≥" substitutionGroup="Ê†áËÆ∞">
 		<xs:complexType mixed="true">
 			<xs:complexContent mixed="true">
-				<xs:extension base="±Íº«Type">
+				<xs:extension base="Ê†áËÆ∞Type">
 					<xs:sequence minOccurs="0">
-						<xs:element ref="±Íº«"/>
+						<xs:element ref="Ê†áËÆ∞"/>
 					</xs:sequence>
-					<xs:attribute name="◊÷∑˚" type="xs:string" use="optional"/>
-					<xs:attribute name="π˙“Ù" type="xs:string" use="optional"/>
-					<xs:attribute name="‘¡“Ù" type="xs:string" use="optional"/>
-					<xs:attribute name="π˙‘¡“Ù" type="xs:string" use="optional"/>
+					<xs:attribute name="Â≠óÁ¨¶" type="xs:string" use="optional"/>
+					<xs:attribute name="ÂõΩÈü≥" type="xs:string" use="optional"/>
+					<xs:attribute name="Á≤§Èü≥" type="xs:string" use="optional"/>
+					<xs:attribute name="ÂõΩÁ≤§Èü≥" type="xs:string" use="optional"/>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
 	</xs:element>
-	<!--∆‰À¸-->
-	<xs:element name="¡¥Ω”◊È" type="¡¥Ω”◊ÈType"/>
-	<xs:element name="◊˜’ﬂ" type="xs:string"/>
-	<xs:complexType name="¡¥Ω”◊ÈType">
+	<!--ÂÖ∂ÂÆÉ-->
+	<xs:element name="ÈìæÊé•ÁªÑ" type="ÈìæÊé•ÁªÑType"/>
+	<xs:element name="‰ΩúËÄÖ" type="xs:string"/>
+	<xs:complexType name="ÈìæÊé•ÁªÑType">
 		<xs:sequence>
-			<xs:element name="¿‡±" type="xs:string"/>
-			<xs:element ref="¡¥Ω”" maxOccurs="unbounded"/>
-			<xs:element ref="¡¥Ω”◊È" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Á±ªÂà´" minOccurs="0" type="xs:string"/>
+			<xs:element ref="ÈìæÊé•" maxOccurs="unbounded"/>
+			<xs:element ref="ÈìæÊé•ÁªÑ" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
-	<xs:element name="¥˙¬Î∂Œ">
+	<xs:element name="‰ª£Á†ÅÊÆµ">
 		<xs:simpleType>
 			<xs:restriction base="xs:string">
 				<xs:whiteSpace value="preserve"/>
