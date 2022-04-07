@@ -1,6 +1,6 @@
 # 龙榆生先生纪念网站数据源代码说明
 
-龙榆生先生纪念网站是开放源代码的项目。目前其代码在主流开放源代码网站 [GitHub](https://github.com/wmjordan/longyusheng.org)（国外） 和 [Gitee](https://gitee.com/longyusheng/longyusheng)（国内）上托管。
+龙榆生先生纪念网站是开放源代码的项目。目前其代码在主流开放源代码网站 [GitHub](https://github.com/wmjordan/longyusheng.org)（国外） 和 [Gitee](https://gitee.com/wmjordan/longyusheng)（国内）上托管。
 
 使用免费的 Visual Studio Code 可从上述托管站点克隆网站源代码。
 
