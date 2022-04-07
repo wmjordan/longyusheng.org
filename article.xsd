@@ -32,6 +32,11 @@
 			<xs:element ref="文章:附注" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="fileID" type="xs:string" use="required"/>
+		<xs:attribute name="siteMapID" type="xs:string" use="optional">
+			<xs:annotation>
+				<xs:documentation>网站地图编号</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
 		<xs:attribute name="subTitleNavigation" type="xs:boolean" default="true">
 			<xs:annotation>
 				<xs:documentation>是否生成副标题目录</xs:documentation>
