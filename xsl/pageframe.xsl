@@ -23,6 +23,7 @@
 			<xsl:call-template name="PageDescriptionMetaTag"/>
 			<meta name="author" content="ÁúÓÜÉú, ×óÎ°Ã÷" />
 			<meta name="copyright" content="×óÎ°Ã÷ (longyusheng.org), {$Date}" />
+			<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 			<link href="{$depth}style.css" rel="stylesheet" type="text/css"/>
 			<script language="javascript" type="text/javascript">
 				<xsl:text>var depth = "</xsl:text>
