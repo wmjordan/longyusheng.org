@@ -269,12 +269,12 @@
 		</xsl:if>
 	</xsl:template>
 
-	<xsl:template match="引文[@xhref]">
+	<xsl:template match="引文[@xhref and not(引用)]">
 		<div class="quot">
 			<xsl:variable name="ciID" select="substring-after(current()/@xhref, '$')"/>
 			<xsl:choose>
 				<xsl:when test="$indexXml/索引/特选词作[@名称='唐宋名家词选']/词[@id=$ciID]">
-					<xsl:copy-of select="f:formatCi(string($唐宋名家词选/名家词选/名家词/词/正文[@id=$ciID]/段落))"/>
+					<xsl:copy-of select="f:formatCi(string($唐宋名家词选/名家词选/名家词/词/*[self::正文 or self::别作版本][@id=$ciID]/段落))"/>
 				</xsl:when>
 				<xsl:when test="$indexXml/索引/特选词作[@名称='近三百年名家词选']/词[@id=$ciID]">
 					<xsl:copy-of select="f:formatCi(string($近三百年名家词选/名家词选/名家词/词/正文[@id=$ciID]/段落))"/>

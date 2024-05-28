@@ -172,19 +172,14 @@
 		<xsl:param name="名称"/>
 		<xsl:param name="词选"/>
 		<特选词作 名称="{$名称}">
-			<xsl:for-each select="$词选/名家词选/名家词/词/正文[@id]">
+			<xsl:for-each select="$词选/名家词选/名家词/词/*[self::正文 or self::别作版本][@id]">
 				<词>
-					<xsl:variable name="position1">
-						<xsl:number count="词" from="名家词"/>
-					</xsl:variable>
-					<xsl:variable name="position2">
-						<xsl:number count="正文" from="词"/>
-					</xsl:variable>
-					<xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
+				<xsl:variable name="position1">
+					<xsl:number count="词" from="名家词"/>
+				</xsl:variable>
+				<xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
 					<xsl:attribute name="词牌"><xsl:value-of select="../词牌"/></xsl:attribute>
 					<xsl:attribute name="作家"><xsl:value-of select="../../作家"/></xsl:attribute>
-					<!-- <xsl:attribute name="位置"><xsl:value-of select="$position1"/></xsl:attribute>
-					<xsl:attribute name="页内位置"><xsl:value-of select="$position2"/></xsl:attribute> -->
 					<xsl:attribute name="首行内容">
 						<xsl:call-template name="提取段落首句">
 							<xsl:with-param name="段落" select="段落"/>
