@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="Unicode"?><?ci?>
-<人物介绍 xmlns="http://lonyusheng.org/schemas/bibliography" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lonyusheng.org/schemas/bibliography 人物介绍.xsd">
+<人物介绍 xmlns="http://lonyusheng.org/schemas/bibliography" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://lonyusheng.org/schemas/bibliography biography.xsd">
 	<作家>
 		<姓名>李白</姓名>
 		<姓名 说明="表字">太白</姓名>
