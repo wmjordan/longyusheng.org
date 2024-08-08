@@ -1,0 +1,10 @@
+var fs, a, ForAppending;
+fs = new ActiveXObject("Scripting.FileSystemObject");
+a = fs.OpenTextFile("menu.html", 1, false);
+var s = a.ReadAll().replace(/[\t\r\n]/g, "");
+a = fs.OpenTextFile("menu.js", 1, false);
+s = a.ReadAll().replace(/\$menu\$/g, s);
+a.Close();
+a = fs.OpenTextFile("X.menuitem.js", 2, true);
+a.Write (s);
+a.Close ();
