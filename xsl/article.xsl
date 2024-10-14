@@ -193,8 +193,10 @@
 			<sup>
 				<a name="fn{@id}" href="#qfn{@id}" class="Ref" title="返回附注对应的位置">[<xsl:value-of select="count(preceding-sibling::段落[@id])+1"/>]</a>
 			</sup>
-			<xsl:value-of select="ancestor::档案文章[1]/正文//引用附注[@id=current()/@id or position() = current()/@id]"/>
-			<xsl:text>：</xsl:text>
+			<xsl:variable name="text">
+				<xsl:value-of select="ancestor::档案文章[1]/正文//引用附注[@id=current()/@id or position() = current()/@id]"/>
+			</xsl:variable>
+			<xsl:if test="string-length($text) != 0"><xsl:value-of select="$text"/>：</xsl:if>
 			<xsl:apply-templates />
 		</p>
 	</xsl:template>
@@ -251,14 +253,14 @@
 	</xsl:template>
 
 	<xsl:template match="引文[name(child::*[1])='引用']">
-		<div class="quot">
+		<blockquote class="quot">
 			<xsl:for-each select="引用">
 				<div class="body">
 					<xsl:copy-of select="f:formatCi(string(current()))"/>
 				</div>
 			</xsl:for-each>
 			<br />
-		</div>
+		</blockquote>
 		<xsl:if test="出处[text()|*]">
 			<div align="right"><xsl:apply-templates select="(出处/text())|(出处/*)"/></div>
 		</xsl:if>
@@ -270,7 +272,7 @@
 	</xsl:template>
 
 	<xsl:template match="引文[@xhref and not(引用)]">
-		<div class="quot">
+		<blockquote class="quot">
 			<xsl:variable name="ciID" select="substring-after(current()/@xhref, '$')"/>
 			<xsl:choose>
 				<xsl:when test="$indexXml/索引/特选词作[@名称='唐宋名家词选']/词[@id=$ciID]">
@@ -280,7 +282,7 @@
 					<xsl:copy-of select="f:formatCi(string($近三百年名家词选/名家词选/名家词/词/正文[@id=$ciID]/段落))"/>
 				</xsl:when>
 			</xsl:choose>
-		</div>
+		</blockquote>
 	</xsl:template>
 
 	<xsl:template match="列举项">

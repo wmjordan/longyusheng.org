@@ -33,10 +33,10 @@
 		<span class="q"><xsl:apply-templates /></span>
 	</xsl:template>
 	<xsl:template match="引文">
-		<div class="quot"><xsl:apply-templates /></div>
+		<blockquote class="quot"><xsl:apply-templates /></blockquote>
 	</xsl:template>
 	<xsl:template match="引文[段落]">
-		<div class="quot"><xsl:apply-templates /></div>
+		<blockquote class="quot"><xsl:apply-templates /></blockquote>
 	</xsl:template>
 	<xsl:template match="省略">
 		<span style="color: #999999" title="此处较原书省略若干字">……</span>

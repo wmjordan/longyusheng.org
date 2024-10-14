@@ -368,7 +368,7 @@ html, body { height: 100%; }
 		clear: both;
 	}
 
-	div.quot {
+	blockquote.quot {
 		font-size: 120%;
 		margin: 6pt 10pt 6pt 35pt;
 	}
@@ -571,7 +571,7 @@ html, body { height: 100%; }
 		margin: 10pt;
 		padding: 5pt;
 	}
-	div.quot {
+	blockquote.quot {
 		margin: 10pt;
 	}
 	.Appendix {
