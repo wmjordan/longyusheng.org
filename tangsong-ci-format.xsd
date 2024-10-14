@@ -12,18 +12,32 @@
 								<xs:complexType>
 									<xs:sequence>
 										<xs:element name="名称" maxOccurs="unbounded"/>
-										<xs:element name="正文">
+										<xs:element name="说明" minOccurs="0" maxOccurs="1">
 											<xs:complexType>
-												<xs:sequence maxOccurs="unbounded">
+												<xs:sequence>
 													<xs:element name="段落" type="段落Type" maxOccurs="unbounded"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="正文" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="段落" type="段落Type" minOccurs="0" maxOccurs="unbounded"/>
 													<xs:sequence maxOccurs="unbounded">
 														<xs:element ref="格律" maxOccurs="unbounded"/>
 														<xs:element name="例词" type="链接Type" minOccurs="0" maxOccurs="unbounded"/>
 													</xs:sequence>
+													<xs:element name="附注" type="段落Type" minOccurs="0" maxOccurs="unbounded"/>
 												</xs:sequence>
 											</xs:complexType>
 										</xs:element>
-										<xs:element ref="链接" minOccurs="0" maxOccurs="unbounded"/>
+										<xs:element name="相关链接" minOccurs="0" maxOccurs="1">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element ref="链接" minOccurs="0" maxOccurs="unbounded"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
@@ -39,6 +53,8 @@
 				<xs:extension base="段落Type">
 					<xs:attribute name="说明" type="xs:string" use="required"/>
 					<xs:attribute name="押韵" type="xs:string" use="optional"/>
+					<xs:attribute name="类别" type="xs:string" use="optional"/>
+					<xs:attribute name="例词" type="xs:string" use="optional"/>
 				</xs:extension>
 			</xs:complexContent>
 		</xs:complexType>
