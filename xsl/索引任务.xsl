@@ -443,7 +443,14 @@
 	<xsl:template name="siteMap">
 		<siteMaps>
 			<xsl:for-each select="$ÍøÕ¾µØÍ¼//siteMap">
-				<siteMap id="{@id}" url="{@url}" name="{@name}" />
+				<siteMap id="{@id}" name="{@name}">
+					<xsl:attribute name="url">
+						<xsl:choose>
+							<xsl:when test="@url"><xsl:value-of select="@url"/></xsl:when>
+							<xsl:otherwise><xsl:value-of select="parent::siteMap/@url"/></xsl:otherwise>
+						</xsl:choose>
+						</xsl:attribute>
+				</siteMap>
 			</xsl:for-each>
 		</siteMaps>
 	</xsl:template>
