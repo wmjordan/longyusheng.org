@@ -149,12 +149,7 @@
 		</xsl:for-each>
 		<xsl:if test="说明">
 			<div class="HeadNote">
-				<xsl:for-each select="说明/段落">
-					<p>
-						<xsl:text>　　</xsl:text>
-						<xsl:apply-templates/>
-					</p>
-				</xsl:for-each>
+				<xsl:apply-templates select="说明/段落"/>
 			</div>
 		</xsl:if>
 		<xsl:if test="介绍">
@@ -176,7 +171,9 @@
 
 	<xsl:template match="段落">
 		<p>
-			<xsl:text>　　</xsl:text>
+			<xsl:if test="not(@缩进='false')">
+				<xsl:text>　　</xsl:text>
+			</xsl:if>
 			<xsl:apply-templates select="text()|*"/>
 		</p>
 	</xsl:template>
