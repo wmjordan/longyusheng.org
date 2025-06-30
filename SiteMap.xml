@@ -39,7 +39,9 @@
 	<siteMap id="xintigequ-mulu" url="xintigequ/index.html" name="龙榆生新体歌曲选">
 		<siteMap id="xintigequ" display="false" name="新体歌曲选"/>
 	</siteMap>
-	<siteMap id="lunwen" display="false" name="词学论文集"/>
+	<siteMap id="lunwenji" url="lunwen/index.html" name="龙榆生词学论文集">
+		<siteMap id="lunwen" display="false" name="词学论文集"/>
+	</siteMap>
 	<siteMap id="zawen-mulu" url="zawen/index.html" name="龙榆生杂文选">
 		<siteMap id="zawen" display="false" name="杂文"/>
 	</siteMap>
