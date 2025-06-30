@@ -1,6 +1,6 @@
 # 龙榆生先生纪念网站数据源代码说明
 
-龙榆生先生纪念网站是开放源代码的项目。目前其代码在主流开放源代码网站 [GitHub](https://github.com/wmjordan/longyusheng.org)（国外） 和 [Gitee](https://gitee.com/wmjordan/longyusheng)（国内）上托管。
+龙榆生先生纪念网站是开放源代码的项目。目前其代码在主流开放源代码网站 [GitHub](https://github.com/wmjordan/longyusheng.org)（国外） 和 [Gitee](https://gitee.com/wmjordan/longyusheng)（国内）上托管。注：目前国内代码仓库被屏蔽，无法访问，请访问国外的代码仓库。
 
 使用免费的 Visual Studio Code 可从上述托管站点克隆网站源代码。
 
@@ -13,26 +13,26 @@
 各类 XML 文档均有对应的 XSD 架构文件，用以规范 XML 文件数据格式。
 
 1. **文章**，架构文件为 *article.xsd*，有如下数据文件：
-    * 封面.xml
-    * 词学十讲.xml
-    * 词学论文.xml
-    * 中国韵文史.xml
-    * 纪念专辑.xml
-    * 新体歌曲.xml
-    * 说明.xml
-    * 其他.xml
+   * 封面.xml
+   * 词学十讲.xml
+   * 词学论文.xml
+   * 中国韵文史.xml
+   * 纪念专辑.xml
+   * 新体歌曲.xml
+   * 说明.xml
+   * 其他.xml
 2. **词选**，架构文件为 *tangsong-ci.xsd*，有如下数据文件：
-    * 唐宋名家词选.xml
-    * 近三百年名家词选.xml
+   * 唐宋名家词选.xml
+   * 近三百年名家词选.xml
 3. **人物简传**，架构文件为 *人物介绍.xsd*，有如下数据文件：
-    * 唐宋词家.xml
-    * 近三百年词家.xml
+   * 唐宋词家.xml
+   * 近三百年词家.xml
 4. **格律**，架构文件为 *tangsong-ci-format.xsd*
-    * 包含 1 个数据文件：唐宋词格律.xml
+   * 包含 1 个数据文件：唐宋词格律.xml
 5. **注释**，架构文件为 *note.xsd*
-    * 包含 1 个数据文件：注释.xml
+   * 包含 1 个数据文件：注释.xml
 6. 索引文件，该文件是通过 XSLT 从上述 XML 文件生成的。在生成 HTML 网页时，使用索引文件提高 XSLT 的速度。
-    * 包含 1 个数据文件：索引文件.xml
+   * 包含 1 个数据文件：索引文件.xml
 
 ## XSLT 文件
 
