@@ -201,7 +201,7 @@ html, body { height: 100%; }
 		font-size: 80%;
 	}
 
-	u, a { padding: 1px; border: 0px; }
+	u, a { padding: 1px; border: 0px; text-underline-offset: 0.25em; }
 
 	hr {
 		border-style: dashed none none none;
@@ -369,7 +369,7 @@ html, body { height: 100%; }
 	}
 
 	blockquote.quot {
-		font-size: 120%;
+		font-size: 110%;
 		margin: 6pt 10pt 6pt 35pt;
 	}
 	.ci {
