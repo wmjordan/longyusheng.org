@@ -20,7 +20,7 @@
 	<xsl:param name="相关人物" select="context:GetCachedDocument ('人物介绍.xml', '/', 'AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader')"/>
 	<xsl:param name="说明" select="context:GetCachedDocument ('说明.xml', '/', 'AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader')"/>
 
-	<xsl:variable name="词学著作" select="$词学十讲|$中国韵文史"/>
+	<xsl:variable name="词学著作" select="$词学十讲|$中国韵文史|$词学论文"/>
 
 	<xsl:template match="/">
 		<xsl:variable name="year">
@@ -449,7 +449,7 @@
 							<xsl:when test="@url"><xsl:value-of select="@url"/></xsl:when>
 							<xsl:otherwise><xsl:value-of select="parent::siteMap/@url"/></xsl:otherwise>
 						</xsl:choose>
-						</xsl:attribute>
+					</xsl:attribute>
 				</siteMap>
 			</xsl:for-each>
 		</siteMaps>
