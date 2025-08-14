@@ -287,6 +287,7 @@
 			<script type="text/javascript">
 				<xsl:text>var ces = {</xsl:text>
 				<xsl:for-each select="$doc/词[词牌=current()/名称/text()]/正文">
+					<xsl:variable name="extraExample" select="following-sibling::别作版本[preceding-sibling::正文[1] = current()][1][contains(@refBy,'格律')]"/>
 					<xsl:if test="position() != 1">
 						<xsl:text>,</xsl:text>
 					</xsl:if>
@@ -294,8 +295,8 @@
 					<xsl:value-of select="position()"/>
 					<xsl:text>': { t: '</xsl:text>
 					<xsl:choose>
-						<xsl:when test="following-sibling::*[1][self::别作版本][contains(@id,'@格律')]">
-							<xsl:value-of select="js:formatCiString(string(following-sibling::*[1][self::别作版本][contains(@id,'@格律')]/段落))"/>
+						<xsl:when test="$extraExample">
+							<xsl:value-of select="js:formatCiString(string($extraExample/段落))"/>
 						</xsl:when>
 						<xsl:otherwise>
 							<xsl:value-of select="js:formatCiString(string(段落))"/>
@@ -404,4 +405,3 @@
 	<div>《唐宋词格律》：<u>上海古籍出版社</u>一九七八年版。</div>
 </xsl:template>
 </xsl:stylesheet>
-

@@ -45,7 +45,7 @@
 														<xs:attribute name="id" type="xs:ID" use="optional"/>
 													</xs:complexType>
 												</xs:element>
-												<xs:element name="别作版本" minOccurs="0">
+												<xs:element name="别作版本" minOccurs="0" maxOccurs="unbounded">
 													<xs:annotation>
 														<xs:documentation>与正式版本有所出入的版本</xs:documentation>
 													</xs:annotation>
@@ -55,7 +55,7 @@
 															<xs:element name="出处" minOccurs="0"/>
 															<xs:element name="段落"/>
 														</xs:sequence>
-														<xs:attribute name="id" type="xs:string"/>
+														<xs:attribute name="refBy" type="xs:string"/>
 													</xs:complexType>
 												</xs:element>
 											</xs:sequence>

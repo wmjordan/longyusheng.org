@@ -172,7 +172,7 @@
 		<xsl:param name="名称"/>
 		<xsl:param name="词选"/>
 		<特选词作 名称="{$名称}">
-			<xsl:for-each select="$词选/名家词选/名家词/词/*[self::正文 or self::别作版本][@id]">
+			<xsl:for-each select="$词选/名家词选/名家词/词/正文[@id]">
 				<词>
 				<xsl:variable name="position1">
 					<xsl:number count="词" from="名家词"/>

@@ -276,7 +276,19 @@
 			<xsl:variable name="ciID" select="substring-after(current()/@xhref, '$')"/>
 			<xsl:choose>
 				<xsl:when test="$indexXml/索引/特选词作[@名称='唐宋名家词选']/词[@id=$ciID]">
-					<xsl:copy-of select="f:formatCi(string($唐宋名家词选/名家词选/名家词/词/*[self::正文 or self::别作版本][@id=$ciID]/段落))"/>
+					<xsl:variable name="ci" select="$唐宋名家词选/名家词选/名家词/词/正文[@id = $ciID]"/>
+					<xsl:variable name="articleMatch" select="$ci/following-sibling::别作版本[contains(@refBy, concat('@', $archive/标题/text()))]"/>
+					<xsl:variable name="match">
+						<xsl:choose>
+							<xsl:when test="$articleMatch">
+								<xsl:value-of select="string($articleMatch/段落)"/>
+							</xsl:when>
+							<xsl:otherwise>
+								<xsl:value-of select="string($ci/段落)"/>
+							</xsl:otherwise>
+						</xsl:choose>
+					</xsl:variable>
+					<xsl:copy-of select="f:formatCi($match)"/>
 				</xsl:when>
 				<xsl:when test="$indexXml/索引/特选词作[@名称='近三百年名家词选']/词[@id=$ciID]">
 					<xsl:copy-of select="f:formatCi(string($近三百年名家词选/名家词选/名家词/词/正文[@id=$ciID]/段落))"/>
