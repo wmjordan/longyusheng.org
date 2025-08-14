@@ -19,6 +19,7 @@ function showExample () {
 	}
 	$(this).nextAll("span[id^='note']").text(ex.n);
 	var junk = $("#cejunk").html (ex.t);
+	junk.find("span[class='note']").remove();
 	junk.find("span[class='ze'], span[class='ping']").after("¡ï");
 	junk.find("span[class='shiyun']").after("¡î");
 	var ceLink = $(this).parents("div.ci").find("div.ciExample a[id^='celink']");
@@ -37,6 +38,7 @@ function showExample () {
 
 function initExample (index, n){
 	var junk = $("#cejunk").html (n.t);
+	junk.find("span[class='note']").remove();
 	junk.find("span[class='ze'], span[class='ping']").after("¡ï");
 	junk.find("span[class='shiyun']").after("¡î");
 	junk.find("br").after("%¡î");
