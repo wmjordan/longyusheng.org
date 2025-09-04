@@ -11,7 +11,7 @@
 
 	<!--# Ò³ÃæÖ÷¿ò¼Ü -->
 	<xsl:template match="/">
-	<html>
+	<html lang="zh-CN">
 		<head>
 			<title><xsl:call-template name="PageTitle"/>
 				<xsl:if test="$html != '1'">
@@ -57,7 +57,9 @@
 		<xsl:call-template name="NavigationPart"/>
 		<xsl:call-template name="TitlePart"/>
 		<xsl:call-template name="RelatedLinksPart"/>
-		<xsl:call-template name="BodyPart"/>
+		<div class="BodyContent">
+			<xsl:call-template name="BodyPart"/>
+		</div>
 	</xsl:template>
 	<xsl:template name="PageKeywordsMetaTag"/>
 	<xsl:template name="PageDescriptionMetaTag"/>

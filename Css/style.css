@@ -88,12 +88,19 @@ html, body { height: 100%; }
 		margin: 5pt auto 3pt 0;
 		list-style-type: none;
 	}
+	.Breadcrumb {
+		border-bottom: solid 1px #640000;
+	}
 	.PageTitle {
 		position: relative;
 		left: -20pt;
-		border-top: solid 1px #640000;
 		padding: 20pt;
 		margin: 0px;
+	}
+	.BodyContent, .PageTitle {
+		max-width: 1024px;
+		width: 99%;
+		margin: 0 auto;
 	}
 
 	a:hover, a:active {

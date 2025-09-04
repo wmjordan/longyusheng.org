@@ -369,7 +369,7 @@
 	</xsl:template>
 
 	<xsl:template name="ArticleNavigationPart">
-		<div class="NaviPart">
+		<div class="NaviPart Breadcrumb">
 			<xsl:text>当前位置：</xsl:text>
 			<xsl:choose>
 				<xsl:when test="$file/@siteMapID">
@@ -447,36 +447,30 @@
 		<xsl:if test="$file">
 			<xsl:variable name="refs" select="$file/正文/*[not(self::档案文章)]/descendant-or-self::*[starts-with(@xhref, '$')]"/>
 			<xsl:if test="$refs">
-				<ul class="jd_menu">
-					<li class="title">
-						<div>相关词作</div>
-						<ul>
-						<xsl:for-each select="$refs">
-							<xsl:variable name="xhref" select="@xhref"/>
-							<xsl:variable name="pos" select="position()"/>
-							<xsl:if test="not ($refs[position() &lt; $pos][@xhref = $xhref])">
-								<xsl:variable name="refNode" select="$indexXml/索引/特选词作/词[@id=substring-after(current()/@xhref, '$')]"/>
-								<li>
-									<a>
-										<xsl:attribute name="href">
-											<xsl:call-template name="mappath">
-												<xsl:with-param name="type" select="'ci'"/>
-												<xsl:with-param name="ref" select="substring-after(@xhref, '$')"/>
-											</xsl:call-template>
-										</xsl:attribute>
-										<u><xsl:value-of select="$refNode/@作家"/></u>
-										<xsl:text>《</xsl:text>
-										<xsl:value-of select="$refNode/@词牌"/>
-										<xsl:text>》（</xsl:text>
-										<xsl:value-of select="$refNode/@首行内容"/>
-										<xsl:text>）</xsl:text>
-									</a>
-								</li>
-							</xsl:if>
-						</xsl:for-each>
-						</ul>
-					</li>
-				</ul>
+				<li class="title">相关词作</li>
+				<xsl:for-each select="$refs">
+					<xsl:variable name="xhref" select="@xhref"/>
+					<xsl:variable name="pos" select="position()"/>
+					<xsl:if test="not ($refs[position() &lt; $pos][@xhref = $xhref])">
+						<xsl:variable name="refNode" select="$indexXml/索引/特选词作/词[@id=substring-after(current()/@xhref, '$')]"/>
+						<li>
+							<a>
+								<xsl:attribute name="href">
+									<xsl:call-template name="mappath">
+										<xsl:with-param name="type" select="'ci'"/>
+										<xsl:with-param name="ref" select="substring-after(@xhref, '$')"/>
+									</xsl:call-template>
+								</xsl:attribute>
+								<u><xsl:value-of select="$refNode/@作家"/></u>
+								<xsl:text>《</xsl:text>
+								<xsl:value-of select="$refNode/@词牌"/>
+								<xsl:text>》（</xsl:text>
+								<xsl:value-of select="$refNode/@首行内容"/>
+								<xsl:text>）</xsl:text>
+							</a>
+						</li>
+					</xsl:if>
+				</xsl:for-each>
 			</xsl:if>
 		</xsl:if>
 	</xsl:template>

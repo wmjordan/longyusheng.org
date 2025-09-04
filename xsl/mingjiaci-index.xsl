@@ -18,7 +18,7 @@
 	</xsl:template>
 
 	<xsl:template name="NavigationPart">
-		<div class="NaviPart">当前位置：<xsl:call-template name="ListAncestorsInSiteMap"/></div>
+		<div class="NaviPart Breadcrumb">当前位置：<xsl:call-template name="ListAncestorsInSiteMap"/></div>
 		<ul class="NaviPart"><xsl:call-template name="ListSiblingsInSiteMap"/></ul>
 	</xsl:template>
 

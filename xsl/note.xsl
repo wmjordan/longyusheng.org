@@ -34,7 +34,7 @@
 	</xsl:template>
 
 	<xsl:template name="NavigationPart">
-		<div class="NaviPart">
+		<div class="NaviPart Breadcrumb">
 			<xsl:text>µ±Ç°Î»ÖÃ£º</xsl:text>
 			<xsl:call-template name="ListAncestorsInSiteMap"/>
 			<xsl:text>×¢ÊÍ</xsl:text>

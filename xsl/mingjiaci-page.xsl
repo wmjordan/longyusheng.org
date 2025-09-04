@@ -71,7 +71,7 @@
 	</xsl:template>
 
 	<xsl:template name="NavigationPart">
-		<div class="NaviPart">当前位置：<xsl:call-template name="ListAncestorsInSiteMap"/>
+		<div class="NaviPart Breadcrumb">当前位置：<xsl:call-template name="ListAncestorsInSiteMap"/>
 			<xsl:choose>
 				<xsl:when test="$ci">
 					<xsl:call-template name="siteMapNodeLink">
