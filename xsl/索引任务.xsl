@@ -13,6 +13,7 @@
 	<xsl:param name="中国韵文史" select="context:GetCachedDocument ('中国韵文史.xml', '/', 'AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader')"/>
 	<xsl:param name="词学十讲" select="context:GetCachedDocument ('词学十讲.xml', '/', 'AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader')"/>
 	<xsl:param name="词学论文" select="context:GetCachedDocument ('词学论文.xml', '/', 'AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader')"/>
+	<xsl:param name="杂著" select="context:GetCachedDocument ('杂著.xml', '/', 'AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader')"/>
 	<xsl:param name="纪念专辑" select="context:GetCachedDocument ('纪念专辑.xml', '/', 'AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader')"/>
 	<xsl:param name="新体歌曲" select="context:GetCachedDocument ('新体歌曲.xml', '/', 'AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader')"/>
 	<xsl:param name="封面" select="context:GetCachedDocument ('封面.xml', '/', 'AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader')"/>
@@ -64,6 +65,9 @@
 			</xsl:call-template>
 			<xsl:call-template name="文章">
 				<xsl:with-param name="文件" select="$词学论文"/>
+			</xsl:call-template>
+			<xsl:call-template name="文章">
+				<xsl:with-param name="文件" select="$杂著"/>
 			</xsl:call-template>
 			<xsl:call-template name="文章">
 				<xsl:with-param name="文件" select="$新体歌曲"/>

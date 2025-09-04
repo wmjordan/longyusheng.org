@@ -42,8 +42,8 @@
 	<siteMap id="lunwenji" url="lunwen/index.html" name="龙榆生词学论文集">
 		<siteMap id="lunwen" display="false" name="词学论文集"/>
 	</siteMap>
-	<siteMap id="zawen-mulu" url="zawen/index.html" name="龙榆生杂文选">
-		<siteMap id="zawen" display="false" name="杂文"/>
+	<siteMap id="zawen-mulu" url="zawen/index.html" name="龙榆生杂著">
+		<siteMap id="zawen" display="false" name="杂著"/>
 	</siteMap>
 	<siteMap id="about" url="about\gy-shiyongshuoming.html" name="使用说明"/>
 	<siteMap id="jinian-mulu" url="jinian/index.html" name="纪念专辑">
