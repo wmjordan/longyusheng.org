@@ -98,7 +98,7 @@ html, body { height: 100%; }
 		margin: 0px;
 	}
 	.BodyContent, .PageTitle {
-		max-width: 1024px;
+		max-width: 880px;
 		width: 99%;
 		margin: 0 auto;
 	}
