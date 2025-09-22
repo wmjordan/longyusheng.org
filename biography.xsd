@@ -67,6 +67,7 @@
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
+							<xs:element ref="人物:附注" minOccurs="0"/>
 						</xs:sequence>
 						<xs:attribute name="性别" use="optional" default="男">
 							<xs:simpleType>
@@ -79,6 +80,13 @@
 						<xs:attribute name="id" use="optional" type="xs:ID"/>
 					</xs:complexType>
 				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="附注">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="人物:段落"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>

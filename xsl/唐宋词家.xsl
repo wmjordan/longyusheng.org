@@ -167,6 +167,58 @@
 				<xsl:apply-templates select="."/>
 			</xsl:for-each>
 		</xsl:if>
+		<xsl:if test="附注">
+			<div class="FootNote">
+				<div class="ItemTitle">附注：</div>
+				<xsl:apply-templates select="附注"/>
+			</div>
+		</xsl:if>
+	</xsl:template>
+
+	<xsl:template match="说明|附注">
+		<xsl:apply-templates select="段落|列举项|代码|引文|代码段"/>
+	</xsl:template>
+
+	<xsl:template match="引用附注">
+		<xsl:variable name="num">
+			<xsl:number count="引用附注" level="any" from="作家" format="1" />
+		</xsl:variable>
+		<xsl:variable name="id">
+			<xsl:choose>
+				<xsl:when test="@id">
+					<xsl:value-of select="@id"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="$num"/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:variable name="title">
+			<xsl:choose>
+				<xsl:when test="string-length(.) != 0">
+					<xsl:value-of select="concat('查看“', ., '”的附注（本页）')"/>
+				</xsl:when>
+				<xsl:otherwise>
+					<xsl:value-of select="concat('查看本页附注 ', $num)"/>
+				</xsl:otherwise>
+			</xsl:choose>
+		</xsl:variable>
+		<xsl:apply-templates />
+		<sup>
+			<a href="#fn{$id}" name="qfn{$id}" class="Ref" title="{$title}">[<xsl:value-of select="$num"/>]</a>
+		</sup>
+	</xsl:template>
+	<xsl:template match="附注/段落[@id]">
+		<p>
+			<sup>
+				<a name="fn{@id}" href="#qfn{@id}" class="Ref" title="返回附注对应的位置">[<xsl:value-of select="count(preceding-sibling::段落[@id])+1"/>]</a>
+			</sup>
+			<xsl:variable name="text">
+				<xsl:value-of select="ancestor::作家[1]//引用附注[@id=current()/@id or position() = current()/@id]"/>
+			</xsl:variable>
+			<xsl:if test="string-length($text) != 0"><xsl:value-of select="$text"/>：</xsl:if>
+			<xsl:apply-templates />
+		</p>
 	</xsl:template>
 
 	<xsl:template match="段落">
