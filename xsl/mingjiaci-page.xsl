@@ -223,7 +223,7 @@
 	</xsl:template>
 
 	<xsl:template match="名家词">
-		<div><xsl:value-of select="选本"/></div>
+		<div><xsl:apply-templates select="选本"/></div>
 		<xsl:if test="说明">
 			<div class="HeadNote">
 				<xsl:for-each select="说明/段落">
@@ -567,4 +567,3 @@
 	</xsl:template>
 
 </xsl:stylesheet>
-
