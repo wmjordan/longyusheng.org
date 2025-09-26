@@ -397,4 +397,13 @@
 			</xs:restriction>
 		</xs:simpleType>
 	</xs:element>
+	<xs:attribute name="edit">
+		<xs:simpleType>
+			<xs:restriction base="xs:token">
+				<xs:enumeration value="补" />
+				<xs:enumeration value="增" />
+				<xs:enumeration value="删" />
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:attribute>
 </xs:schema>

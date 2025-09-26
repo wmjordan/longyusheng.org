@@ -43,6 +43,7 @@
 															<xs:element name="段落" type="xs:string"/>
 														</xs:sequence>
 														<xs:attribute name="id" type="xs:ID" use="optional"/>
+														<xs:attribute ref="edit" use="optional"/>
 													</xs:complexType>
 												</xs:element>
 												<xs:element name="别作版本" minOccurs="0" maxOccurs="unbounded">
@@ -76,6 +77,7 @@
 															<xs:element ref="段落" maxOccurs="unbounded"/>
 														</xs:sequence>
 													</xs:choice>
+													<xs:attribute ref="edit"/>
 												</xs:complexType>
 											</xs:element>
 										</xs:sequence>
@@ -84,6 +86,7 @@
 							</xs:element>
 						</xs:sequence>
 						<xs:attribute name="id" type="xs:ID" use="required"/>
+						<xs:attribute ref="edit"/>
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>
@@ -92,5 +95,5 @@
 			<xs:selector xpath="名家词/词/别作版本"/>
 			<xs:field xpath="@id"/>
 		</xs:unique>
-</xs:element>
+	</xs:element>
 </xs:schema>
