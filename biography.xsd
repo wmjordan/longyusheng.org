@@ -87,7 +87,7 @@
 	<xs:element name="附注">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element ref="人物:段落"/>
+				<xs:element ref="人物:段落" maxOccurs="unbounded"/>
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
