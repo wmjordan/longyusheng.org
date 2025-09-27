@@ -114,10 +114,10 @@
 					<li>
 						<a>
 							<xsl:attribute name="href">
-									<xsl:call-template name="mappath">
-										<xsl:with-param name="type" select="'format'"/>
-										<xsl:with-param name="ref" select="$ciPai"/>
-									</xsl:call-template>
+								<xsl:call-template name="mappath">
+									<xsl:with-param name="type" select="'format'"/>
+									<xsl:with-param name="ref" select="$ciPai"/>
+								</xsl:call-template>
 							</xsl:attribute>
 							<xsl:value-of select="concat ('词牌：', $ciPai)"/>
 						</a>
@@ -224,7 +224,7 @@
 
 	<xsl:template match="名家词">
 		<div><xsl:apply-templates select="选本"/></div>
-		<xsl:if test="说明">
+		<xsl:if test="说明|@edit|词/正文[@edit]">
 			<div class="HeadNote">
 				<xsl:for-each select="说明/段落">
 					<p>
@@ -232,6 +232,49 @@
 						<xsl:apply-templates/>
 					</p>
 				</xsl:for-each>
+				<xsl:choose>
+					<xsl:when test="@edit = '增'">
+						<xsl:variable name="add" select="count(词/正文[@edit='补'])"/>
+						<p>
+							<span>初版未收，修订版收<xsl:value-of select="count(词/正文[not(@edit) or @edit = '增'])"/>首。</span>
+							<xsl:if test="$add != 0">
+								<span>从其它著作补入<xsl:value-of select="$add"/>首。</span>
+							</xsl:if>
+						</p>
+					</xsl:when>
+					<xsl:when test="@edit = '删'">
+						<xsl:variable name="add" select="count(词/正文[@edit='补'])"/>
+						<p>
+							<span>修订版删，初版收<xsl:value-of select="count(词/正文[not(@edit) or @edit = '删'])"/>首。</span>
+							<xsl:if test="$add != 0">
+								<span>从其它著作补入<xsl:value-of select="$add"/>首。</span>
+							</xsl:if>
+						</p>
+					</xsl:when>
+					<xsl:otherwise>
+						<xsl:if test="词/正文[@edit]">
+							<p>
+								<xsl:variable name="plus" select="count(词/正文[@edit='增'])"/>
+								<xsl:variable name="del" select="count(词/正文[@edit='删'])"/>
+								<xsl:variable name="add" select="count(词/正文[@edit='补'])"/>
+								<xsl:if test="$plus != 0 or $del != 0">
+									<span>初版共收<xsl:value-of select="count(词/正文[not(@edit) or @edit = '删'])"/>首。</span>
+									<span>
+										<xsl:text>修订版</xsl:text>
+										<xsl:if test="$plus != 0">增<xsl:value-of select="$plus"/>首</xsl:if>
+										<xsl:if test="$del != 0">删<xsl:value-of select="$del"/>首</xsl:if>
+										<xsl:text>，共收</xsl:text>
+										<xsl:value-of select="count(词/正文[not(@edit) or @edit = '增'])"/>
+										<xsl:text>首。</xsl:text>
+									</span>
+								</xsl:if>
+								<xsl:if test="$add != 0">
+									<span>从其它著作补入<xsl:value-of select="$add"/>首。</span>
+								</xsl:if>
+							</p>
+						</xsl:if>
+					</xsl:otherwise>
+				</xsl:choose>
 			</div>
 		</xsl:if>
 		<br />
@@ -275,7 +318,14 @@
 							<xsl:if test="preceding-sibling::*[1][self::题记]">
 								<div class="tiji"><xsl:apply-templates select="preceding-sibling::*[1][self::题记]" mode="substract"/></div>
 							</xsl:if>
-							<div>　（<xsl:value-of select="js:firstLine(string(段落))"/>）</div>
+							<div>
+								<xsl:text>　（</xsl:text>
+								<xsl:value-of select="js:firstLine(string(段落))"/>
+								<xsl:text>）</xsl:text>
+								<xsl:if test="@edit">
+									<span class="edit"><xsl:value-of select="@edit"/></span>
+								</xsl:if>
+							</div>
 						</xsl:for-each>
 					</span>
 				</div>
