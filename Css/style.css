@@ -374,6 +374,14 @@ html, body { height: 100%; }
 		margin-top: 12pt;
 		color: #660000;
 	}
+#ciList .edit {
+		clear: none;
+		border-width: 0;
+		margin: 0;
+		padding: 0;
+		color: #993333;
+		font-size: 80%;
+	}
 
 	.tiji {
 		font-size: 130%;
