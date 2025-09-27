@@ -113,7 +113,7 @@ namespace XsltExtensions
 			int n = strPara.IndexOfAny (SentenceDelimiter);
 			strPara = strPara.Substring (0, n);
 			strPara = Regex.Replace (strPara, "\r\n", "");
-			strPara = Regex.Replace (strPara, "[¡¾¡¿£Þ£­£¤£À££¡ü]", "");
+			strPara = Regex.Replace (strPara, "[¡¾¡¿£Þ£­£¤£À££¡ü£½¡¼¡½]", "");
 			return strPara;
 		}
 
