@@ -288,6 +288,9 @@
 			<xsl:if test="@id">
 				<a name="{@id}"></a>
 			</xsl:if>
+			<xsl:if test="@edit">
+				<div class="edit"><xsl:call-template name="edit"/></div>
+			</xsl:if>
 			<xsl:if test="preceding-sibling::*[1][name()='题记']">
 				<xsl:apply-templates select="preceding-sibling::*[1]"/>
 			</xsl:if>
@@ -341,6 +344,9 @@
 						</div>
 					</xsl:for-each>
 				</div>
+			</xsl:if>
+			<xsl:if test="following-sibling::正文">
+				<hr />
 			</xsl:if>
 		</xsl:for-each>
 		<xsl:variable name="prev_pos" select="count(preceding-sibling::*[name()='词'])"/>
@@ -458,7 +464,6 @@
 		<div class="body">
 			<xsl:copy-of select="js:formatCi(string(段落))"/>
 		</div>
-		<hr />
 	</xsl:template>
 	<xsl:template match="附录">
 		<div class="Appendix">
@@ -475,9 +480,6 @@
 				</xsl:otherwise>
 			</xsl:choose>
 		</div>
-		<xsl:if test="not(following-sibling::*[1][name()='附录'])">
-			<hr/>
-		</xsl:if>
 	</xsl:template>
 	<xsl:template match="出处">
 		<xsl:text>【</xsl:text>
@@ -545,6 +547,20 @@
 			</xsl:when>
 			<xsl:otherwise>
 				<xsl:apply-templates select="current()"/>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
+
+	<xsl:template name="edit">
+		<xsl:choose>
+			<xsl:when test="@edit = '删'">
+				<xsl:text>修订版删</xsl:text>
+			</xsl:when>
+			<xsl:when test="@edit = '增'">
+				<xsl:text>修订版增</xsl:text>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text>原版未收，增补例词</xsl:text>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>

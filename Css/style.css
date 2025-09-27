@@ -141,6 +141,7 @@ html, body { height: 100%; }
 		line-height: 1px;
 		height: 1px;
 		color: transparent;
+		clear: both;
 	}
 	br.empty {
 		line-height: 70%;
@@ -364,6 +365,14 @@ html, body { height: 100%; }
 
 	.doublelist span.item a, .listitem a {
 		text-decoration: none;
+	}
+
+	.edit {
+		clear: left;
+		border-left: 5pt solid #660000;
+		padding-left: 10pt;
+		margin-top: 12pt;
+		color: #660000;
 	}
 
 	.tiji {
