@@ -519,6 +519,13 @@
 		<div class="Appendix">
 			<xsl:apply-templates select="注释" mode="note"/>
 			<xsl:apply-templates select="出处[1]"/>
+			<xsl:if test="@edit">
+				<span class="note">
+					<xsl:text>（</xsl:text>
+					<xsl:call-template name="edit"/>
+					<xsl:text>）</xsl:text>
+				</span>
+			</xsl:if>
 			<xsl:choose>
 				<xsl:when test="count(段落)=1">
 					<xsl:apply-templates select="段落"/>
@@ -610,7 +617,7 @@
 				<xsl:text>修订版增</xsl:text>
 			</xsl:when>
 			<xsl:otherwise>
-				<xsl:text>原版未收，增补例词</xsl:text>
+				<xsl:text>原版未收</xsl:text>
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
