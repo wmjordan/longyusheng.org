@@ -161,7 +161,7 @@
 		<xsl:if test="½éÉÜ">
 			<a name="zhuanji"><br/></a>
 			<h2>¡¾´«¡¡¼Ç¡¿</h2>
-			<xsl:apply-templates select="½éÉÜ/¶ÎÂä"/>
+			<xsl:apply-templates select="½éÉÜ/¶ÎÂä|½éÉÜ/ÒýÎÄ"/>
 		</xsl:if>
 		<xsl:if test="¼¯ÆÀ">
 			<a name="jiping"><br/></a>
