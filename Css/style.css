@@ -250,6 +250,19 @@ html, body { height: 100%; }
 	.ping2 { color: #000066; }
 	.zeng { color: #336600; }
 	.zhong { /*cursor: hand;*/ }
+	span.mark {
+		text-emphasis-style: circle open;
+		text-emphasis-position: under;
+		*border-bottom: #640000 1pt dashed; /* Windows CHM reader compatible */
+	}
+	span.ping, span.ping2 {
+		text-emphasis-style: double-circle open;
+		text-emphasis-position: under;
+	}
+	span.ze, span.ze2, span.ze3 {
+		text-emphasis-style: triangle open;
+		text-emphasis-position: under;
+	}
 	.lingge { text-decoration: underline; }
 	/*.duiou {
 		border-left: double 4px #9B0000; border-right: double 4px #9B0000;
@@ -374,7 +387,7 @@ html, body { height: 100%; }
 		margin-top: 12pt;
 		color: #660000;
 	}
-#ciList .edit {
+	#ciList .edit {
 		clear: none;
 		border-width: 0;
 		margin: 0;
