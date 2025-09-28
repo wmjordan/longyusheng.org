@@ -185,11 +185,9 @@
 	</xsl:template>
 	<xsl:template name="WriterLink">
 		<xsl:choose>
-			<xsl:when test="$indexXml/名家词选/名家词[(作家=$writerName) and (传记='1')]">
+			<xsl:when test="$indexXml/索引/词人/作家[姓名=$writerName and @简传='1']">
 				<a>
-					<xsl:attribute name="title"><xsl:value-of select="$writerName"/> 传记<xsl:if test="$indexXml/名家词选/名家词[作家=$writerName]/集评[text()='1']">
-						<xsl:text>与集评</xsl:text>
-					</xsl:if></xsl:attribute>
+					<xsl:attribute name="title"><xsl:value-of select="$writerName"/> 传记<xsl:if test="$indexXml/索引/词人/作家[姓名=$writerName and @集评='1']">与集评</xsl:if></xsl:attribute>
 					<xsl:attribute name="href">
 						<xsl:call-template name="mappath">
 							<xsl:with-param name="type" select="'biblio'"/>

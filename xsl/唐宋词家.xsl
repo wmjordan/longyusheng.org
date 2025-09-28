@@ -72,9 +72,15 @@
 		<h1 class="PageTitle">
 			<xsl:choose>
 				<xsl:when test="$fID != '词人'">
-					<xsl:call-template name="formatName">
-						<xsl:with-param name="n" select="$writer/姓名"/>
-					</xsl:call-template>
+					<a>
+						<xsl:attribute name="href">
+							<xsl:call-template name="mappath">
+								<xsl:with-param name="type" select="'coll'"/>
+								<xsl:with-param name="ref" select="$fID"/>
+							</xsl:call-template>
+						</xsl:attribute>
+						<u><xsl:value-of select="$fID"/></u>
+					</a>
 				</xsl:when>
 				<xsl:otherwise>词人传记与集评</xsl:otherwise>
 			</xsl:choose>
