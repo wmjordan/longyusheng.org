@@ -25,7 +25,7 @@ function showExample () {
 	var ceLink = $(this).parents("div.ci").find("div.ciExample a[id^='celink']");
 	ceLink.get(0).href = ex.h;
 	ceLink.text(s.text().replace(/[0-9]+:/g, ""));
-	var ext = $("#cejunk").text().replace (/¡ï(.)/g, "$1¡ï");
+	var ext = $("#cejunk").text().replace(/[¡°¡±]/g,"").replace (/¡ï(.)/g, "$1¡ï");
 	var extp = ext.split(/[¡ï¡î]/g);
 	var ei;
 	var pi = 0;
@@ -42,7 +42,7 @@ function initExample (index, n){
 	junk.find("span[class='ze'], span[class='ping']").after("¡ï");
 	junk.find("span[class='shiyun']").after("¡î");
 	junk.find("br").after("%¡î");
-	var ss = junk.text().split(/¡ï[£¬¡¢¡££º£»£¡£¿]|¡î/g);
+	var ss = junk.text().replace(/[¡°¡±]/g,"").split(/¡ï[£¬¡¢¡££º£»£¡£¿]|¡î/g);
 	var s = new Array();
 	var si;
 	for (var i=0; i<ss.length; i++) {
