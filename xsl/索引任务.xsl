@@ -178,10 +178,10 @@
 		<特选词作 名称="{$名称}">
 			<xsl:for-each select="$词选/名家词选/名家词/词/正文[@id]">
 				<词>
-				<xsl:variable name="position1">
-					<xsl:number count="词" from="名家词"/>
-				</xsl:variable>
-				<xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
+					<xsl:variable name="position1">
+						<xsl:number count="词" from="名家词"/>
+					</xsl:variable>
+					<xsl:attribute name="id"><xsl:value-of select="@id"/></xsl:attribute>
 					<xsl:attribute name="词牌"><xsl:value-of select="../词牌"/></xsl:attribute>
 					<xsl:attribute name="作家"><xsl:value-of select="../../作家"/></xsl:attribute>
 					<xsl:attribute name="首行内容">
@@ -210,9 +210,9 @@
 
 	<xsl:template name="获取词作相关文章">
 		<xsl:param name="档案"/>
-		<xsl:variable name="当前词作ID" select="@id"/>
+		<xsl:variable name="当前词作ID" select="concat ('$', @id)"/>
 		<xsl:for-each select="$档案/文档集/资料档案">
-			<xsl:variable name="相关文章" select=".//档案文章[正文/*[not(self::档案文章)]/descendant::链接[@xhref= concat ('$', $当前词作ID)]]"/>
+			<xsl:variable name="相关文章" select=".//档案文章[正文/*[not(self::档案文章)]/descendant-or-self::*[self::链接[@xhref=$当前词作ID] or self::引文[@xhref=$当前词作ID]]]"/>
 			<xsl:if test="$相关文章">
 				<档案 id="{@archiveID}">
 					<xsl:variable name="资料档案ID" select="@archiveID"/>
@@ -440,7 +440,7 @@
 
 	<xsl:template name="提取段落首句">
 		<xsl:param name="段落"/>
-		<xsl:variable name="预处理文字" select="translate (substring ($段落, 1, 48), '，！？ －＾【】&#xD;&#xA;', '。。。。。')"/>
+		<xsl:variable name="预处理文字" select="translate (substring ($段落, 1, 48), '，！？ －＾【】＝&#xD;&#xA;', '。。。。。')"/>
 		<xsl:value-of select="substring-before ($预处理文字, '。')"/>
 	</xsl:template>
 
