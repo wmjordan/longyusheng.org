@@ -156,6 +156,10 @@
 	</xsl:template>
 
 	<xsl:template match="注释">
+		<span class="note"><xsl:apply-templates /></span>
+	</xsl:template>
+	<xsl:template match="注释[段落]">
+		<xsl:comment>不要使用此格式</xsl:comment>
 		<xsl:for-each select="text()|*">
 			<xsl:choose>
 				<xsl:when test="self::段落">
