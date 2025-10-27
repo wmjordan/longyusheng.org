@@ -104,7 +104,7 @@ html, body { height: 100%; }
 	}
 
 	a:hover, a:active {
-		padding: 0px; border: 1px solid #804040;
+		border: 1px solid #804040;
 		background: #DEDEBE;
 		text-decoration: none;
 	}
@@ -133,7 +133,7 @@ html, body { height: 100%; }
 		font-size: 80%;
 	}
 
-	u, a { padding: 1px; border: 0px; text-underline-offset: 0.25em; }
+	u, a { border: 1px solid transparent; text-underline-offset: 0.25em; }
 
 	hr {
 		border-style: dashed none none none;
