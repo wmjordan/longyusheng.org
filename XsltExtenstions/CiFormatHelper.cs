@@ -57,6 +57,12 @@ namespace XsltExtensions
 			return doc;
 		}
 
+		public XmlDocument formatCiWithoutLineBreaks (string strCi) {
+			XmlDocument doc = new XmlDocument ();
+			doc.AppendChild (doc.CreateElement ("div")).CreateNavigator ().AppendChild (formatCiString(strCi, false));
+			return doc;
+		}
+
 		static readonly RegexReplace EmptyLine = new RegexReplace("^\r\n", String.Empty);
 		static readonly RegexReplace RemoveNewLine1 = new RegexReplace("([£¬£»£º])\r\n", m => m.Groups[1].Value);
 		static readonly RegexReplace RemoveNewLine2 = new RegexReplace("([^£Þ£­£¤])([£¿£¡])\r\n", m => m.Groups[1].Value + m.Groups[2].Value);
@@ -96,17 +102,23 @@ namespace XsltExtensions
 		});
 
 		public string formatCiString (string strCi) {
+			return formatCiString(strCi, true);
+		}
+
+		public string formatCiString(string strCi, bool lineBreak) {
 			var hasCjkExt = hasCjkExtText(strCi);
 			strCi = strCi.Replace(EmptyLine).Replace(RemoveNewLine1).Replace(RemoveNewLine2).Replace(SwapRhythmMarker).Replace(CiNote).Replace(CiRhythm).Replace(CiLeading);
 			if (hasCjkExt) {
-				strCi = encodeCjkExtText (strCi);
+				strCi = encodeCjkExtText(strCi);
 			}
-			string[] paras = ParaRegex.Split (strCi);
-			for (int i = 0; i < paras.Length; i++) {
-				ref var p = ref paras[i];
-				p = p.Length > 0 ? $"<div>{p}</div>" : "<br class=\"empty\"/>";
-			}
-			return String.Concat (paras);
+			string[] paras = ParaRegex.Split(strCi);
+            if (lineBreak) {
+                for (int i = 0; i < paras.Length; i++) {
+                    ref var p = ref paras[i];
+                    p = p.Length > 0 ? $"<div>{p}</div>" : "<br class=\"empty\"/>";
+                }
+            }
+			return String.Concat(paras);
 		}
 
 		public string firstLine (string strPara) {
