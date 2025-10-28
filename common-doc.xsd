@@ -61,6 +61,17 @@
 		</xs:attribute>
 		<xs:attribute name="id" type="xs:ID" use="optional"/>
 	</xs:attributeGroup>
+	<xs:attributeGroup name="编辑属性">
+		<xs:attribute name="edit">
+			<xs:simpleType>
+				<xs:restriction base="xs:token">
+					<xs:enumeration value="补" />
+					<xs:enumeration value="增" />
+					<xs:enumeration value="删" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
 	<xs:attributeGroup name="扩展属性">
 		<xs:anyAttribute namespace="##any"/>
 	</xs:attributeGroup>
@@ -397,13 +408,4 @@
 			</xs:restriction>
 		</xs:simpleType>
 	</xs:element>
-	<xs:attribute name="edit">
-		<xs:simpleType>
-			<xs:restriction base="xs:token">
-				<xs:enumeration value="补" />
-				<xs:enumeration value="增" />
-				<xs:enumeration value="删" />
-			</xs:restriction>
-		</xs:simpleType>
-	</xs:attribute>
 </xs:schema>

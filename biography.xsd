@@ -58,7 +58,7 @@
 											<xs:element ref="人物:段落" maxOccurs="unbounded"/>
 										</xs:sequence>
 									</xs:sequence>
-									<xs:attribute ref="人物:edit"/>
+									<xs:attributeGroup ref="人物:编辑属性"/>
 								</xs:complexType>
 							</xs:element>
 							<xs:element name="相关链接" minOccurs="0">
