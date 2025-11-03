@@ -140,6 +140,20 @@
 			</xsl:for-each>
 		</div>
 	</xsl:template>
+
+	<xsl:template name="edit">
+		<xsl:choose>
+			<xsl:when test="@edit = '删'">
+				<xsl:text>修订版删</xsl:text>
+			</xsl:when>
+			<xsl:when test="@edit = '增'">
+				<xsl:text>修订版增</xsl:text>
+			</xsl:when>
+			<xsl:otherwise>
+				<xsl:text>原版未收</xsl:text>
+			</xsl:otherwise>
+		</xsl:choose>
+	</xsl:template>
 	
 	<xsl:template match="作家">
 		<xsl:if test="生卒">
@@ -238,6 +252,13 @@
 	<xsl:template match="集评">
 		<p>
 			<div>
+				<xsl:if test="@edit">
+					<span class="note">
+						<xsl:text>（</xsl:text>
+						<xsl:call-template name="edit"/>
+						<xsl:text>）</xsl:text>
+					</span>
+				</xsl:if>
 				<xsl:apply-templates select="人物|段落"/>
 			</div>
 			<div align="right">【<xsl:value-of select="出处"/>】</div>
