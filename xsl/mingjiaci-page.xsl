@@ -224,11 +224,8 @@
 		<div><xsl:apply-templates select="选本"/></div>
 		<xsl:if test="说明|@edit|词/正文[@edit]">
 			<div class="HeadNote">
-				<xsl:for-each select="说明/段落">
-					<p>
-						<xsl:text>　　</xsl:text>
-						<xsl:apply-templates/>
-					</p>
+				<xsl:for-each select="说明">
+					<xsl:apply-templates select="*"/>
 				</xsl:for-each>
 				<xsl:choose>
 					<xsl:when test="@edit = '增'">
@@ -321,7 +318,20 @@
 								<xsl:value-of select="js:firstLine(string(段落))"/>
 								<xsl:text>）</xsl:text>
 								<xsl:if test="@edit">
-									<span class="edit"><xsl:value-of select="@edit"/></span>
+									<span>
+										<xsl:attribute name="class">
+											<xsl:text>edit</xsl:text>
+											<xsl:choose>
+												<xsl:when test="@edit = '增'">
+													<xsl:text> added</xsl:text>
+												</xsl:when>
+												<xsl:when test="@edit = '删'">
+													<xsl:text> removed</xsl:text>
+												</xsl:when>
+											</xsl:choose>
+										</xsl:attribute>
+										<xsl:value-of select="@edit"/>
+									</span>
 								</xsl:if>
 							</div>
 						</xsl:for-each>
@@ -336,7 +346,7 @@
 			<xsl:if test="@id">
 				<a name="{@id}"></a>
 			</xsl:if>
-			<xsl:if test="@edit">
+			<xsl:if test="@edit|../../@edit">
 				<div class="edit"><xsl:call-template name="edit"/></div>
 			</xsl:if>
 			<xsl:if test="preceding-sibling::*[1][name()='题记']">
@@ -345,15 +355,35 @@
 			<div class="ci">
 				<xsl:apply-templates select="current()"/>
 			</div>
-			<xsl:if test="following-sibling::*[1][self::附录] or following-sibling::别作版本[last()]/following-sibling::*[1][self::附录]">
+			<xsl:if test="following-sibling::*[1][self::附录 or self::校注] or following-sibling::别作版本[last()]/following-sibling::*[1][self::附录 or self::校注]">
 				<xsl:variable name="bodyID" select="generate-id()"/>
-				<xsl:for-each select="following-sibling::附录[generate-id(preceding-sibling::正文[1])=$bodyID]">
-					<xsl:apply-templates select="current()"/>
-				</xsl:for-each>
+				<xsl:variable name="comments" select="following-sibling::附录[generate-id(preceding-sibling::正文[1])=$bodyID]"/>
+				<xsl:variable name="annotations" select="following-sibling::校注[generate-id(preceding-sibling::正文[1])=$bodyID]"/>
+				<xsl:if test="$comments or $annotations">
+					<div class="Appendix">
+						<xsl:for-each select="$comments">
+							<xsl:variable name="firstChild" select="child::*[1]"/>
+							<xsl:choose>
+								<xsl:when test="$firstChild[self::出处]">
+									<xsl:apply-templates select="current()" mode="comment"/>
+								</xsl:when>
+								<xsl:when test="$firstChild[self::注释]">
+									<xsl:apply-templates select="current()" mode="note"/>
+								</xsl:when>
+							</xsl:choose>
+						</xsl:for-each>
+						<xsl:for-each select="$annotations">
+							<div class="edit">校注</div>
+							<div class="AppendixContent">
+								<xsl:apply-templates />
+							</div>
+						</xsl:for-each>
+					</div>
+				</xsl:if>
 			</xsl:if>
 			<xsl:if test="@id and $indexXml/索引/特选词作/词[@id = current()/@id]/档案">
 				<div class="Appendix">
-					<div>相关文章：</div>
+					<div class="edit">相关文章</div>
 					<xsl:for-each select="$indexXml/索引/特选词作/词[@id = current()/@id]/档案">
 						<div class="list">
 							<span class="listitem" style="float: left;">
@@ -513,9 +543,8 @@
 			<xsl:copy-of select="js:formatCi(string(段落))"/>
 		</div>
 	</xsl:template>
-	<xsl:template match="附录">
+	<xsl:template match="附录" mode="comment">
 		<div class="Appendix">
-			<xsl:apply-templates select="注释" mode="note"/>
 			<xsl:apply-templates select="出处[1]"/>
 			<xsl:if test="@edit">
 				<span class="note">
@@ -530,10 +559,24 @@
 				</xsl:when>
 				<xsl:otherwise>
 					<xsl:for-each select="段落|出处[position()&gt;1]">
-						<div style="margin-left: 15pt;"><xsl:apply-templates select="current()"/></div>
+						<div class="detailnote"><xsl:apply-templates select="current()"/></div>
 					</xsl:for-each>
 				</xsl:otherwise>
 			</xsl:choose>
+			<xsl:if test="校注">
+				<div class="detailnote note">
+					<div class="edit">校注</div>
+					<div class="AppendixContent">
+						<xsl:apply-templates select="校注/*"/>
+					</div>
+				</div>
+			</xsl:if>
+		</div>
+	</xsl:template>
+	<xsl:template match="附录" mode="note">
+		<div class="edit">注释</div>
+		<div class="AppendixContent">
+			<xsl:apply-templates select="注释"/>
 		</div>
 	</xsl:template>
 	<xsl:template match="出处">
@@ -542,7 +585,7 @@
 		<xsl:text>】</xsl:text>
 	</xsl:template>
 
-	<xsl:template match="注释" mode="note">
+	<xsl:template match="附录/注释">
 		<xsl:variable name="node" select="$ciNotesXml/资料档案/索引/注释[词汇=current()/@关键字]"/>
 		<div>
 			<b><xsl:value-of select="@关键字"/></b>
@@ -569,6 +612,13 @@
 					<xsl:message terminate="yes">找不到 <xsl:value-of select="@关键字"/> 的注释。</xsl:message>
 				</xsl:otherwise>
 			</xsl:choose>
+		</div>
+	</xsl:template>
+	<xsl:template match="校注/注释">
+		<div>
+			<b><xsl:value-of select="@关键字"/></b>
+			<xsl:text>：</xsl:text>
+			<xsl:apply-templates />
 		</div>
 	</xsl:template>
 	<xsl:template match="注解" mode="note">
@@ -605,13 +655,30 @@
 			</xsl:otherwise>
 		</xsl:choose>
 	</xsl:template>
+	<xsl:template match="异文">
+		<div>
+			<b><xsl:value-of select="@文本"/></b>
+			<xsl:text>：</xsl:text>
+			<xsl:choose>
+				<xsl:when test="@类型">
+					<xsl:value-of select="@类型"/>
+				</xsl:when>
+				<xsl:otherwise>别作</xsl:otherwise>
+			</xsl:choose>
+			<xsl:text>“</xsl:text>
+			<span class="q"><xsl:value-of select="@别作"/></span>
+			<xsl:text>”。</xsl:text>
+			<xsl:apply-templates/>
+		</div>
+	</xsl:template>
 
 	<xsl:template name="edit">
+		<xsl:variable name="edit" select="@edit|../../@edit"/>
 		<xsl:choose>
-			<xsl:when test="@edit = '删'">
+			<xsl:when test="$edit = '删'">
 				<xsl:text>修订版删</xsl:text>
 			</xsl:when>
-			<xsl:when test="@edit = '增'">
+			<xsl:when test="$edit = '增'">
 				<xsl:text>修订版增</xsl:text>
 			</xsl:when>
 			<xsl:otherwise>

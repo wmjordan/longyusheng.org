@@ -338,10 +338,13 @@ html, body { height: 100%; }
 
 	.Appendix {
 		margin: 5pt 15pt 5pt 0pt;
-		padding-left: 20pt;
 		line-height: 150%;
 		text-align: justify;
 		text-justify: distribute;
+	}
+
+	.AppendixContent {
+		margin: 5pt 0pt 10pt 15pt;
 	}
 
 	.detailnote {
@@ -394,6 +397,12 @@ html, body { height: 100%; }
 		padding: 0;
 		color: #993333;
 		font-size: 80%;
+	}
+	#ciList .edit.added {
+		color: #336600;
+	}
+	#ciList .edit.removed {
+		color: #003366;
 	}
 
 	.tiji {
@@ -474,7 +483,7 @@ html, body { height: 100%; }
 	}
 
 	.note {
-		color: #666666;
+		color: #555;
 	}
 
 	.RelatedLinks {
@@ -538,7 +547,6 @@ html, body { height: 100%; }
 	}
 	.Appendix {
 		margin: auto;
-		padding-left: 0;
 	}
 	span.Prev, span.Next {
 		float: none;
@@ -581,19 +589,19 @@ html, body { height: 100%; }
 	.image {
 		background: #68502A url(images/bg2-dark.jpg);
 	}
-	.ping {
+	.ping, #ciList .edit.removed {
 		color: #3090FF;
 	}
 	.ping2 {
 		color: #257EDD;
 	}
-	.ze {
+	.ze, .edit {
 		color: #E11F00;
 	}
 	.ze2 {
 		color: #C11F00;
 	}
-	.reading, .zeng {
+	.reading, .zeng, #ciList .edit.added {
 		color: #00E10A;
 	}
 	.ci blockquote {
