@@ -276,7 +276,8 @@
 
 	<xsl:template name="formatExample">
 		<xsl:variable name="doc" select="msxsl:node-set($ciXml)/名家词选/名家词"/>
-		<xsl:if test="$doc/词[词牌=current()/名称]">
+		<xsl:variable name="name" select="名称"/>
+		<xsl:if test="$doc/词[词牌=$name or 词牌/@别名=$name]">
 			<!-- <ul class="jd_menu" id="formatExample">
 				<li class="title"><div>【例词】</div>
 					<ul>
@@ -286,7 +287,7 @@
 			</ul> -->
 			<script type="text/javascript">
 				<xsl:text>var ces = {</xsl:text>
-				<xsl:for-each select="$doc/词[词牌=current()/名称/text()]/正文">
+				<xsl:for-each select="$doc/词[词牌=$name or 词牌/@别名=$name]/正文">
 					<xsl:variable name="extraExample" select="following-sibling::别作版本[preceding-sibling::正文[1] = current()][1][contains(@refBy,'格律')]"/>
 					<xsl:if test="position() != 1">
 						<xsl:text>,</xsl:text>

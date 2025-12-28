@@ -404,11 +404,15 @@ html, body { height: 100%; }
 	#ciList .edit.removed {
 		color: #003366;
 	}
+	#ciList .listitem .note, .PageTitle .note {
+		font-size: 60%;
+	}
 
 	.tiji {
 		font-size: 130%;
 		font-weight: bold;
 		clear: left;
+		margin: 10pt;
 	}
 	#ciList .tiji {
 		font-size: 100%;

@@ -19,6 +19,7 @@
 										<xs:element name="词牌">
 											<xs:complexType mixed="true">
 												<xs:attribute name="id" type="xs:ID" use="optional"/>
+												<xs:attribute name="别名" type="xs:token" use="optional"/>
 											</xs:complexType>
 										</xs:element>
 										<xs:sequence maxOccurs="unbounded">

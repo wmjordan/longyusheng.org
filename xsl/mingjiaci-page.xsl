@@ -15,6 +15,16 @@
 			<xsl:value-of select="$ci/词牌"/>
 		</xsl:if>
 	</xsl:variable>
+	<xsl:variable name="ciPaiAlias">
+		<xsl:if test="$ci">
+			<xsl:value-of select="$ci/词牌/@别名"/>
+		</xsl:if>
+	</xsl:variable>
+	<xsl:variable name="format">
+		<xsl:if test="$ci">
+			<xsl:value-of select="$indexXml/索引/格律/词牌/名称[@名称 = $ciPai or @名称 = $ciPaiAlias]/@名称"/>
+		</xsl:if>
+	</xsl:variable>
 
 	<xsl:template name="PageTitle">
 		<xsl:choose>
@@ -110,13 +120,13 @@
 						</a>
 					</li>
 				</xsl:if>
-				<xsl:if test="$indexXml/索引/格律/词牌/名称[@名称 = $ciPai]">
+				<xsl:if test="$format != ''">
 					<li>
 						<a>
 							<xsl:attribute name="href">
 								<xsl:call-template name="mappath">
 									<xsl:with-param name="type" select="'format'"/>
-									<xsl:with-param name="ref" select="$ciPai"/>
+									<xsl:with-param name="ref" select="$format"/>
 								</xsl:call-template>
 							</xsl:attribute>
 							<xsl:value-of select="concat ('词牌：', $ciPai)"/>
@@ -160,6 +170,9 @@
 					</span>
 				</xsl:when>
 			</xsl:choose>
+			<xsl:if test="$ciPaiAlias != ''">
+				<div class="note">（<xsl:value-of select="$ciPaiAlias"/>）</div>
+			</xsl:if>
 		</h1>
 		<xsl:if test="$ci">
 			<div class="PrintContent"><xsl:value-of select="$writerName"/></div>
@@ -167,12 +180,12 @@
 	</xsl:template>
 	<xsl:template name="CiPaiLink">	
 		<xsl:choose>
-			<xsl:when test="$indexXml/索引/格律/词牌/名称[@名称 = $ciPai]">
+			<xsl:when test="$format != ''">
 				<a>
 					<xsl:attribute name="href">
 						<xsl:call-template name="mappath">
 							<xsl:with-param name="type" select="'format'"/>
-							<xsl:with-param name="ref" select="$ciPai"/>
+							<xsl:with-param name="ref" select="$format"/>
 						</xsl:call-template>
 					</xsl:attribute>
 					<xsl:value-of select="$ciPai"/>
@@ -307,6 +320,9 @@
 							</xsl:if>
 							<xsl:value-of select="词牌"/>
 						</a>
+						<xsl:if test="词牌/@别名">
+							<span class="note">（<xsl:value-of select="词牌/@别名"/>）</span>
+						</xsl:if>
 					</span>
 					<span class="listdesc" style="font-size: 80%;">
 						<xsl:for-each select="正文">
