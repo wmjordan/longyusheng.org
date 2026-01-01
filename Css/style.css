@@ -407,6 +407,9 @@ html, body { height: 100%; }
 	#ciList .listitem .note, .PageTitle .note {
 		font-size: 60%;
 	}
+	#ciList .listdesc {
+		font-size: 80%;
+	}
 
 	.tiji {
 		font-size: 130%;
@@ -514,7 +517,7 @@ html, body { height: 100%; }
 		word-break: auto-phrase;
 	}
 	.listdesc {
-		width: auto;
+		display: block;
 	}
 	.doublelist span.item {
 		display: block;
