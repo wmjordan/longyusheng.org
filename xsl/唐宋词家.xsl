@@ -187,6 +187,16 @@
 				<xsl:apply-templates select="."/>
 			</xsl:for-each>
 		</xsl:if>
+		<xsl:if test="附录">
+			<h2>【附　录】</h2>
+			<xsl:for-each select="附录">
+				<xsl:if test="position() != 1">
+					<hr />
+				</xsl:if>
+				<xsl:apply-templates select="标题"/>
+				<xsl:apply-templates select="."/>
+			</xsl:for-each>
+		</xsl:if>
 		<xsl:if test="附注">
 			<div class="FootNote">
 				<div class="ItemTitle">附注：</div>
@@ -195,7 +205,7 @@
 		</xsl:if>
 	</xsl:template>
 
-	<xsl:template match="说明|附注">
+	<xsl:template match="说明|附录|附注">
 		<xsl:apply-templates select="段落|列举项|代码|引文|代码段"/>
 	</xsl:template>
 
@@ -241,6 +251,11 @@
 		</p>
 	</xsl:template>
 
+	<xsl:template match="标题">
+		<h3>
+			<xsl:apply-templates select="text()|*"/>
+		</h3>
+	</xsl:template>
 	<xsl:template match="段落">
 		<p>
 			<xsl:if test="not(@缩进='false')">

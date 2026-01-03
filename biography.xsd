@@ -68,7 +68,8 @@
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
-							<xs:element ref="人物:附注" minOccurs="0"/>
+							<xs:element name="附录" type="人物:附录Type" minOccurs="0"/>
+							<xs:element name="附注" type="人物:附录Type" minOccurs="0"/>
 						</xs:sequence>
 						<xs:attribute name="性别" use="optional" default="男">
 							<xs:simpleType>
@@ -84,13 +85,6 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
-	<xs:element name="附注">
-		<xs:complexType>
-			<xs:sequence>
-				<xs:element ref="人物:段落" maxOccurs="unbounded"/>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
 	<xs:group name="段落">
 		<xs:choice>
 			<xs:element ref="人物:段落"/>
@@ -98,4 +92,10 @@
 			<xs:element ref="人物:列举项"/>
 		</xs:choice>
 	</xs:group>
+	<xs:complexType name="附录Type">
+		<xs:sequence>
+			<xs:element ref="人物:标题" minOccurs="0" maxOccurs="1"/>
+			<xs:element ref="人物:段落" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
 </xs:schema>
