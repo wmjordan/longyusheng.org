@@ -6,6 +6,9 @@
 		</siteMap>
 		<siteMap id="tangsongci-index2" url="tangsongci/pinyin.html" name="姓氏读音排序目录"/>
 		<siteMap id="tangsongci-index3" url="tangsongci/tongji.html" name="词作数目排序目录"/>
+		<siteMap id="tangsongci-index4" url="tangsongci/minguo.html" name="初版目次"/>
+		<siteMap id="tangsongci-index5" url="tangsongci/jianguo.html" name="修订版目次"/>
+		<siteMap id="tangsongci-index6" url="tangsongci/edits.html" name="收词一览"/>
 		<siteMap id="tangsongci-biblio" url="tangsongci/ciren.html" name="词人传记与集评">
 			<siteMap id="tangsongci-biblio-pages" name="唐宋名词家简传" display="false"/>
 		</siteMap>

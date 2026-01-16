@@ -229,6 +229,27 @@ html, body { height: 100%; }
 		background: #E0D8BC;
 	}
 
+	table.data {
+		border: double 4px #993333;
+		border-collapse: collapse;
+	}
+	table.data td, table.data th {
+		padding: 3pt;
+		border-left: solid 1px #993333;
+	}
+	table.data th {
+		border-bottom: solid 1px #993333;
+	}
+	table.data td.num {
+		text-align: right;
+		font-family: monospace;
+	}
+	table.data tr > :last-child, table.data tfoot td {
+		font-weight: bold;
+	}
+	table.data tfoot td {
+		border-top: solid 1px #993333;
+	}
 }
 
 /* pageframe end **/
@@ -420,6 +441,7 @@ html, body { height: 100%; }
 	#ciList .tiji {
 		font-size: 100%;
 		font-weight: normal;
+		margin: 0;
 	}
 
 	.tizhu {
@@ -560,6 +582,12 @@ html, body { height: 100%; }
 	}
 	#qrcode {
 		width: 330px;
+	}
+	table.data {
+		width: 100%;
+	}
+	table.data td, table.data th {
+		padding: 2pt;
 	}
 }
 
