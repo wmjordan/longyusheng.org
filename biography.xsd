@@ -68,7 +68,7 @@
 									</xs:sequence>
 								</xs:complexType>
 							</xs:element>
-							<xs:element name="附录" type="人物:附录Type" minOccurs="0"/>
+							<xs:element name="附录" type="人物:附录Type" minOccurs="0" maxOccurs="unbounded"/>
 							<xs:element name="附注" type="人物:附录Type" minOccurs="0"/>
 						</xs:sequence>
 						<xs:attribute name="性别" use="optional" default="男">
