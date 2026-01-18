@@ -1,0 +1,918 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="..\XsltExecutor\configuration.xsd">
+	<task name="*索引文件">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.SimpleExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileName" value="索引文件.xml"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/索引任务.xsl">
+			<document path="XsltTasks.xml"/>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/stringdictionary" isReused="false">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringDictionaryUtility"/>
+				</extensionObject>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="封面">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\{@fileID}.html"/>
+				<string name="MatchingXPath" value="//档案文章"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/article.xsl" useBuiltInXsltExtensions="true">
+			<document path="封面.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<node-set name="file" value="."/>
+				<string name="depth" value=""/>
+				<string name="siteMapId" value="root"/>
+			</arguments>
+		</settings>
+	</task>
+	<task name="说明">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\{ancestor::资料档案[1]/@archiveID}\{@fileID}.html"/>
+				<string name="MatchingXPath" value="//档案文章"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/article.xsl">
+			<document path="说明.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<node-set name="file" value="."/>
+				<string name="siteMapId" value="about"/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="纪念专辑目录">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\jinian\index.html"/>
+				<string name="MatchingXPath" value="/"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/article.xsl">
+			<document path="纪念专辑.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<string name="siteMapId" value="jinian-mulu"/>
+				<node-set name="file" value="null"/>
+				<node-set name="archive" value="/文档集/资料档案"/>
+			</arguments>
+		</settings>
+	</task>
+	<task name="纪念专辑">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\{ancestor::资料档案[1]/@archiveID}\{@fileID}.html"/>
+				<string name="MatchingXPath" value="//档案文章"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/article.xsl">
+			<document path="纪念专辑.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<node-set name="file" value="."/>
+				<string name="siteMapId" value="jinian"/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
+				</extensionObject>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="新体歌曲目录">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\xintigequ\index.html"/>
+				<string name="MatchingXPath" value="/"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/article.xsl">
+			<document path="新体歌曲.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<string name="siteMapId" value="xintigequ-mulu"/>
+				<node-set name="file" value="null"/>
+				<node-set name="archive" value="/文档集/资料档案"/>
+			</arguments>
+		</settings>
+	</task>
+	<task name="新体歌曲">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\{ancestor::资料档案[1]/@archiveID}\{@fileID}.html"/>
+				<string name="MatchingXPath" value="//档案文章"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/article.xsl">
+			<document path="新体歌曲.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<node-set name="file" value="."/>
+				<string name="siteMapId" value="xintigequ"/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
+				</extensionObject>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="龙榆生先生论文集目录">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\{@archiveID}\index.html"/>
+				<string name="MatchingXPath" value="/文档集/资料档案"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/article.xsl">
+			<document path="词学论文.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<node-set name="file" value="null"/>
+				<string name="siteMapId" value="lunwenji"/>
+				<node-set name="archive" value="."/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
+				</extensionObject>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="龙榆生先生论文集">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\{ancestor::资料档案[1]/@archiveID}\{@fileID}.html"/>
+				<string name="MatchingXPath" value="//档案文章"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/article.xsl">
+			<document path="词学论文.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<node-set name="file" value="."/>
+				<string name="siteMapId" value="lunwenji"/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
+				</extensionObject>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="龙榆生先生杂著目录">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\{@archiveID}\index.html"/>
+				<string name="MatchingXPath" value="/文档集/资料档案"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/article.xsl">
+			<document path="杂著.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<node-set name="file" value="null"/>
+				<string name="siteMapId" value="zawen"/>
+				<node-set name="archive" value="."/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
+				</extensionObject>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="龙榆生先生杂著">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\{ancestor::资料档案[1]/@archiveID}\{@fileID}.html"/>
+				<string name="MatchingXPath" value="//档案文章"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/article.xsl">
+			<document path="杂著.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<node-set name="file" value="."/>
+				<string name="siteMapId" value="zawen"/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
+				</extensionObject>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="词学十讲目录">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\cixueshijiang\index.html"/>
+				<string name="MatchingXPath" value="/"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/article.xsl">
+			<document path="词学十讲.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<string name="siteMapId" value="cixueshijiang-mulu"/>
+				<node-set name="file" value="null"/>
+				<node-set name="archive" value="/文档集/资料档案"/>
+			</arguments>
+		</settings>
+	</task>
+	<task name="词学十讲正文">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\{ancestor::资料档案[1]/@archiveID}\{@fileID}.html"/>
+				<string name="MatchingXPath" value="//档案文章"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/article.xsl">
+			<document path="词学十讲.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<string name="siteMapId" value="cixueshijiang"/>
+				<node-set name="file" value="."/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
+				</extensionObject>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+			</extensions>
+			<namespaces>
+				<item name="extension" uri="http://longyusheng.org/xslt/extensions"/>
+				<item name="" uri="http://longyusheng.org/schemas/article"/>
+			</namespaces>
+		</settings>
+	</task>
+	<task name="中国韵文史目录">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\zhongguoyunwenshi\index.html"/>
+				<string name="MatchingXPath" value="/"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/article.xsl">
+			<document path="中国韵文史.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<TransformerTypeInfo typeName="AppFramework.Xml.CompiledXslTransform"/>
+			<arguments>
+				<string name="siteMapId" value="zhongguoyunwenshi-mulu"/>
+				<node-set name="file" value="null"/>
+				<node-set name="archive" value="/文档集/资料档案"/>
+			</arguments>
+		</settings>
+	</task>
+	<task name="中国韵文史正文">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\{ancestor::资料档案[1]/@archiveID}\{@fileID}.html"/>
+				<string name="MatchingXPath" value="//档案文章"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/article.xsl">
+			<document path="中国韵文史.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<TransformerTypeInfo typeName="AppFramework.Xml.CompiledXslTransform"/>
+			<arguments>
+				<document name="ciXml" value="唐宋名家词选.xml">
+					<settings>
+						<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+					</settings>
+				</document>
+				<string name="siteMapId" value="zhongguoyunwenshi"/>
+				<node-set name="file" value="."/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
+				</extensionObject>
+			</extensions>
+			<namespaces>
+				<item name="" uri="http://longyusheng.org/schemas/article"/>
+			</namespaces>
+		</settings>
+	</task>
+	<task name="唐宋名词家传记目录">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\tangsongci\ciren.html"/>
+				<string name="MatchingXPath" value="/"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/唐宋词家.xsl">
+			<document path="唐宋词家.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<string name="fID" value="词人"/>
+				<string name="writer" value=""/>
+				<string name="选集名称" value="唐宋名家词选"/>
+				<string name="siteMapId" value="tangsongci-biblio"/>
+			</arguments>
+		</settings>
+	</task>
+	<task name="唐宋名词家传记">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\{@传记路径}"/>
+				<string name="MatchingXPath" value="/索引/词人[@名称='唐宋名家词选']/作家[@简传='1']"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/唐宋词家.xsl">
+			<document path="索引文件.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<xpath name="fID" value="姓名"/>
+				<string name="选集名称" value="唐宋名家词选"/>
+				<document name="writerXml" value="唐宋词家.xml">
+					<settings>
+						<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+					</settings>
+				</document>
+				<string name="siteMapId" value="tangsongci-biblio-pages"/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="唐宋名家词选目录">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\tangsongci\mulu.html"/>
+				<string name="MatchingXPath" value="/"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/mingjiaci-index.xsl">
+			<document path="唐宋名家词选.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<string name="fID" value="0"/>
+				<string name="sort" value=""/>
+				<string name="siteMapId" value="tangsongci-index1"/>
+			</arguments>
+		</settings>
+	</task>
+	<task name="唐宋名家词选目录(作家拼音排序)">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\tangsongci\pinyin.html"/>
+				<string name="MatchingXPath" value="/"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/mingjiaci-index.xsl">
+			<document path="唐宋名家词选.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<string name="fID" value="0"/>
+				<string name="sort" value="作家"/>
+				<string name="siteMapId" value="tangsongci-index2"/>
+			</arguments>
+		</settings>
+	</task>
+	<task name="唐宋名家词选目录(词作数量排序)">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\tangsongci\tongji.html"/>
+				<string name="MatchingXPath" value="/"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/mingjiaci-index.xsl">
+			<document path="唐宋名家词选.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<string name="fID" value="0"/>
+				<string name="sort" value="count"/>
+				<string name="siteMapId" value="tangsongci-index3"/>
+			</arguments>
+		</settings>
+	</task>
+	<task name="唐宋名家词选目录(民国版词人)">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\tangsongci\minguo.html"/>
+				<string name="MatchingXPath" value="/"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/mingjiaci-index.xsl">
+			<document path="唐宋名家词选.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<string name="fID" value="0"/>
+				<string name="sort" value="minguo"/>
+				<string name="siteMapId" value="tangsongci-index4"/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="唐宋名家词选目录(建国版词人)">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\tangsongci\jianguo.html"/>
+				<string name="MatchingXPath" value="/"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/mingjiaci-index.xsl">
+			<document path="唐宋名家词选.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<string name="fID" value="0"/>
+				<string name="sort" value="jianguo"/>
+				<string name="siteMapId" value="tangsongci-index5"/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="唐宋名家词选目录(收词一览)">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\tangsongci\edits.html"/>
+				<string name="MatchingXPath" value="/"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/mingjiaci-index.xsl">
+			<document path="唐宋名家词选.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<string name="fID" value="0"/>
+				<string name="sort" value="edits"/>
+				<string name="siteMapId" value="tangsongci-index6"/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="唐宋名家词选">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\ci\{../@id}\{count(preceding-sibling::词)+1}.html"/>
+				<string name="MatchingXPath" value="/名家词选/名家词/词"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/mingjiaci-page.xsl">
+			<document path="唐宋名家词选.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<eval name="fID" value="count(preceding-sibling::词)+1"/>
+				<string name="depth" value="../../"/>
+				<xpath name="writerName" value="../作家"/>
+				<string name="sort" value="0"/>
+				<string name="siteMapId" value="tangsongci-pages"/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="唐宋名家词选(词人词作目录)">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\ci\{@id}\index.html"/>
+				<string name="MatchingXPath" value="/名家词选/名家词"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/mingjiaci-page.xsl">
+			<document path="唐宋名家词选.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<string name="depth" value="../../"/>
+				<string name="fID" value="0"/>
+				<xpath name="writerName" value="作家"/>
+				<string name="sort" value="0"/>
+				<string name="siteMapId" value="tangsongci-pages"/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="近三百年名家词选目录">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\jindaici\mulu.html"/>
+				<string name="MatchingXPath" value="/"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/mingjiaci-index.xsl">
+			<document path="近三百年名家词选.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<string name="fID" value="0"/>
+				<string name="sort" value=""/>
+				<string name="siteMapId" value="jindaici-index1"/>
+			</arguments>
+		</settings>
+	</task>
+	<task name="近三百年名家词选目录(作家拼音排序)">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\jindaici\pinyin.html"/>
+				<string name="MatchingXPath" value="/"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/mingjiaci-index.xsl">
+			<document path="近三百年名家词选.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<string name="fID" value="0"/>
+				<string name="sort" value="作家"/>
+				<string name="siteMapId" value="jindaici-index2"/>
+			</arguments>
+		</settings>
+	</task>
+	<task name="近三百年名家词选目录(词作数量排序)">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\jindaici\tongji.html"/>
+				<string name="MatchingXPath" value="/"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/mingjiaci-index.xsl">
+			<document path="近三百年名家词选.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<string name="fID" value="0"/>
+				<string name="sort" value="count"/>
+				<string name="siteMapId" value="jindaici-index3"/>
+			</arguments>
+		</settings>
+	</task>
+	<task name="近三百年名家词选">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\ci\{../@id}\{count(preceding-sibling::词)+1}.html"/>
+				<string name="MatchingXPath" value="/名家词选/名家词/词"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/mingjiaci-page.xsl">
+			<document path="近三百年名家词选.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<eval name="fID" value="count(preceding-sibling::词)+1"/>
+				<string name="depth" value="../../"/>
+				<xpath name="writerName" value="../作家"/>
+				<string name="sort" value="0"/>
+				<string name="siteMapId" value="jindaici-pages"/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="近三百年名家词选(词人词作目录)">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\ci\{@id}\index.html"/>
+				<string name="MatchingXPath" value="/名家词选/名家词"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/mingjiaci-page.xsl">
+			<document path="近三百年名家词选.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<string name="depth" value="../../"/>
+				<string name="fID" value="0"/>
+				<xpath name="writerName" value="作家"/>
+				<string name="sort" value="0"/>
+				<string name="siteMapId" value="jindaici-pages"/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="近三百年名词家传记目录">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\jindaici\ciren.html"/>
+				<string name="MatchingXPath" value="/"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/唐宋词家.xsl">
+			<document path="近三百年词家.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<string name="fID" value="词人"/>
+				<string name="writer" value=""/>
+				<string name="选集名称" value="近三百年名家词选"/>
+				<string name="siteMapId" value="jindaici-biblio"/>
+			</arguments>
+		</settings>
+	</task>
+	<task name="近三百年名词家传记">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\{@传记路径}"/>
+				<string name="MatchingXPath" value="/索引/词人[@名称='近三百年名家词选']/作家[@简传='1']"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/唐宋词家.xsl">
+			<document path="索引文件.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<xpath name="fID" value="姓名"/>
+				<string name="选集名称" value="近三百年名家词选"/>
+				<document name="writerXml" value="近三百年词家.xml">
+					<settings>
+						<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+					</settings>
+				</document>
+				<string name="siteMapId" value="jindaici-biblio-pages"/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
+				</extensionObject>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="唐宋词格律">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\cipai\cipai{position ()}.html"/>
+				<string name="MatchingXPath" value="/唐宋词格律/类别/词牌"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/ci-format.xsl">
+			<document path="唐宋词格律.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<node-set name="词牌" value="."/>
+				<document name="ciXml" value="唐宋名家词选.xml">
+					<settings>
+						<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+					</settings>
+				</document>
+				<string name="siteMapId" value="ci-format"/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="唐宋词格律(目录)">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\cipai\mulu.html"/>
+				<string name="MatchingXPath" value="/"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/ci-format.xsl">
+			<document path="唐宋词格律.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<string name="siteMapId" value="gl-mulu"/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="唐宋词格律(字数目录)">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\cipai\zishu.html"/>
+				<string name="MatchingXPath" value="/"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/ci-format.xsl">
+			<document path="唐宋词格律.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<string name="siteMapId" value="gl-zishu"/>
+				<string name="sort" value="字数"/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="唐宋词格律(拼音目录)">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\cipai\pinyin.html"/>
+				<string name="MatchingXPath" value="/"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/ci-format.xsl">
+			<document path="唐宋词格律.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<string name="siteMapId" value="gl-pinyin"/>
+				<string name="sort" value="拼音"/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="CHM 项目文件(Content)">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.SimpleExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileName" value="html\mingjiaci_xsl.hhc"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/hhc.xsl">
+			<document path="索引文件.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<TransformerTypeInfo typeName="AppFramework.Xml.CompiledXslTransform"/>
+			<arguments>
+				<string name="depth" value=""/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="CHM 项目文件(index)">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.SimpleExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileName" value="html\mingjiaci_xsl.hhk"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/hhk.xsl">
+			<document path="索引文件.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<string name="depth" value=""/>
+			</arguments>
+		</settings>
+	</task>
+	<task name="注释">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\{@路径}"/>
+				<string name="MatchingXPath" value="/索引/注释/词汇"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/note.xsl">
+			<document path="索引文件.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<xpath name="keyword" value="@name"/>
+				<string name="depth" value="../../"/>
+				<string name="siteMapId" value="注释"/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
+				</extensionObject>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="其他">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\{ancestor::资料档案[1]/@archiveID}\{@fileID}.html"/>
+				<string name="MatchingXPath" value="//档案文章"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/misc.xsl">
+			<document path="其他.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<node-set name="file" value="."/>
+				<string name="siteMapId" value="其他"/>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
+				</extensionObject>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<urlRewrite>
+		<item rewrite="E:\My Documents\My Codes\名家词\XsltExtenstions\bin\Debug\" pattern="//"/>
+		<item rewrite="D:\Codes\longyusheng.org\XsltExtenstions\bin\Release\" pattern="//"/>
+	</urlRewrite>
+</configuration>
