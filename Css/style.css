@@ -330,9 +330,8 @@ html, body { height: 100%; }
 		padding-right: 20pt;
 	}
 
-	.Page .list, .Page .doublelist {
+	.Page .list .Page .doublelist {
 		text-justify: auto;
-		clear: both;
 	}
 
 	blockquote.quot {
