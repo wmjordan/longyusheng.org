@@ -179,8 +179,8 @@
 		</table>
 		<div class="Appendix">
 			<div class="edit">注</div>
-			<div class="AppendixContent"><sup><a name="fn1" href="#qfn1" class="Ref">[1]</a></sup>初版三首《蝶恋花》（《鹊踏枝》）入欧阳修作，修订版入冯延己作，故初版欧阳修收 9 首，冯延己收 12 首。</div>
-			<div class="AppendixContent"><sup><a name="fn2" href="#qfn2" class="Ref">[2]</a></sup>初版范仲淹词收 4 首，其中《忆王孙·秋思》一首实李重元《忆王孙·秋词》。</div>
+			<div class="AppendixContent"><sup><a name="fn1" href="#qfn1" class="Ref">[1]</a></sup>初版三首《蝶恋花》（《鹊踏枝》）入<u>欧阳修</u>作，修订版入<u>冯延己</u>作，故初版<u>欧阳修</u>收 9 首，<u>冯延己</u>收 12 首。</div>
+			<div class="AppendixContent"><sup><a name="fn2" href="#qfn2" class="Ref">[2]</a></sup>初版<u>范仲淹</u>词收 4 首，其中《忆王孙·秋思》一首实<u>李重元</u>《忆王孙·秋词》。</div>
 		</div>
 	</xsl:template>
 	<xsl:template name="num">
