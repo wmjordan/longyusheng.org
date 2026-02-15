@@ -386,7 +386,6 @@ html, body { height: 100%; }
 		display: inline-block;
 		font-size: 90%;
 		padding: 5pt;
-		width: 60%;
 	}
 	.listdesc ol {
 		margin: 0 auto;
