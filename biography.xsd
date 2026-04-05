@@ -56,6 +56,7 @@
 										<xs:sequence maxOccurs="unbounded">
 											<xs:element name="人物" minOccurs="0"/>
 											<xs:element ref="人物:段落" maxOccurs="unbounded"/>
+											<xs:element ref="人物:校注" minOccurs="0"/>
 										</xs:sequence>
 									</xs:sequence>
 									<xs:attributeGroup ref="人物:编辑属性"/>
@@ -70,6 +71,7 @@
 							</xs:element>
 							<xs:element name="附录" type="人物:附录Type" minOccurs="0" maxOccurs="unbounded"/>
 							<xs:element name="附注" type="人物:附录Type" minOccurs="0"/>
+							<xs:element ref="人物:校注" minOccurs="0"/>
 						</xs:sequence>
 						<xs:attribute name="性别" use="optional" default="男">
 							<xs:simpleType>

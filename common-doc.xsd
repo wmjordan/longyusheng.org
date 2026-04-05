@@ -394,6 +394,38 @@
 	<!--其它-->
 	<xs:element name="链接组" type="链接组Type"/>
 	<xs:element name="作者" type="xs:string"/>
+	<xs:group name="附注">
+		<xs:choice>
+			<xs:element name="注释">
+				<xs:complexType mixed="true">
+					<xs:choice minOccurs="0" maxOccurs="unbounded">
+						<xs:element ref="引文"/>
+						<xs:element ref="标记"/>
+					</xs:choice>
+					<xs:attribute name="关键字" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:choice>
+	</xs:group>
+	<xs:element name="校注">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element ref="段落"/>
+				<xs:group ref="附注"/>
+				<xs:element name="异文">
+					<xs:complexType>
+						<xs:complexContent mixed="true">
+							<xs:extension base="段落Type">
+								<xs:attribute name="文本" type="xs:string" use="required"/>
+								<xs:attribute name="类型" type="xs:token" use="optional"/>
+								<xs:attribute name="别作" type="xs:string" use="required"/>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
 	<xs:complexType name="链接组Type">
 		<xs:sequence>
 			<xs:element name="类别" minOccurs="0" type="xs:string"/>
