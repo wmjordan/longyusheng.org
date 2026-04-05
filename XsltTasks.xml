@@ -575,6 +575,34 @@
 			</extensions>
 		</settings>
 	</task>
+	<task name="唐宋名家词选(全文本)">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\唐宋名家词选.html"/>
+				<string name="MatchingXPath" value="/"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/mingjiaci-all.xsl">
+			<document path="唐宋名家词选.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<document name="writerXml" value="唐宋词家.xml">
+					<settings>
+						<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+					</settings>
+				</document>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
 	<task name="近三百年名家词选目录">
 		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
 			<properties>
@@ -728,6 +756,34 @@
 				</extensionObject>
 				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
 					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+			</extensions>
+		</settings>
+	</task>
+	<task name="近三百年名家词选(全文本)">
+		<executorTypeInfo typeName="AppFramework.Xml.XsltExecutors.XPathMatchingExecutor" assembly="AppFramework">
+			<properties>
+				<string name="OutputFileNamePattern" value="html\近三百年名家词选.html"/>
+				<string name="MatchingXPath" value="/"/>
+			</properties>
+		</executorTypeInfo>
+		<settings styleSheetPath="xsl/mingjiaci-all.xsl">
+			<document path="近三百年名家词选.xml">
+				<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+			</document>
+			<arguments>
+				<document name="writerXml" value="近三百年词家.xml">
+					<settings>
+						<readerTypeInfo typeName="AppFramework.Utilities.XsltExecutor.XmlnsFilteredReader"/>
+					</settings>
+				</document>
+			</arguments>
+			<extensions>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/string" isReused="true">
+					<typeInfo typeName="AppFramework.Xml.XsltExtensions.StringUtility"/>
+				</extensionObject>
+				<extensionObject name="http://longyusheng.org/xslt/extensions/ciFormat" isReused="true">
+					<typeInfo typeName="XsltExtensions.CiFormatHelper" assembly="//XsltExtensions.dll"/>
 				</extensionObject>
 			</extensions>
 		</settings>
