@@ -271,7 +271,7 @@
 	<xsl:template name="copyrightText">
 		<div>
 			<xsl:choose>
-				<xsl:when test="/名家词选/标题 = '近三百年名家词选'">《近三百年名家词选》：<u>上海古籍出版社</u>一九五六年版。</xsl:when>
+				<xsl:when test="/名家词选/标题 = '近三百年名家词选'">《近三百年名家词选》：<u>上海古典文学出版社</u>一九五六年版。</xsl:when>
 				<xsl:when test="/名家词选/标题 = '唐宋名家词选'">《唐宋名家词选》：<u>开明书店</u>一九三八年版，<u>上海古籍出版社</u>一九八零年版。</xsl:when>
 			</xsl:choose>
 		</div>
