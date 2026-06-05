@@ -53,13 +53,25 @@ namespace XsltExtensions
 
 		public XmlDocument formatCi (string strCi) {
 			XmlDocument doc = new XmlDocument ();
-			doc.AppendChild (doc.CreateElement ("div")).CreateNavigator ().AppendChild (formatCiString(strCi));
+			var nav = doc.AppendChild(doc.CreateElement("div")).CreateNavigator();
+			try {
+				nav.AppendChild(formatCiString(strCi));
+			}
+			catch (Exception ex) {
+				throw new System.Xml.Xsl.XsltException("词代码异常：" + strCi, ex);
+			}
 			return doc;
 		}
 
 		public XmlDocument formatCiWithoutLineBreaks (string strCi) {
 			XmlDocument doc = new XmlDocument ();
-			doc.AppendChild (doc.CreateElement ("div")).CreateNavigator ().AppendChild (formatCiString(strCi, false));
+			var nav = doc.AppendChild(doc.CreateElement("div")).CreateNavigator();
+			try {
+				nav.AppendChild(formatCiString(strCi, false));
+			}
+			catch (Exception ex) {
+				throw new System.Xml.Xsl.XsltException("词代码异常：" + strCi, ex);
+			}
 			return doc;
 		}
 
