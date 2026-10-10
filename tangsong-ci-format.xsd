@@ -11,7 +11,11 @@
 							<xs:element name="词牌" maxOccurs="unbounded">
 								<xs:complexType>
 									<xs:sequence>
-										<xs:element name="名称" maxOccurs="unbounded"/>
+										<xs:element name="名称" maxOccurs="unbounded">
+											<xs:complexType mixed="true">
+												<xs:attribute name="排序名" type="xs:NMTOKEN"/>
+											</xs:complexType>
+										</xs:element>
 										<xs:element name="说明" minOccurs="0" maxOccurs="1">
 											<xs:complexType>
 												<xs:sequence>

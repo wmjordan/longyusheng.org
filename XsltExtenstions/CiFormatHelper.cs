@@ -180,6 +180,10 @@ namespace XsltExtensions
 			}
 			return sb.ToString ();
 		}
+
+		public static string useNonEmpty(string a, string b) {
+			return String.IsNullOrEmpty(a) ? b : a;
+		}
 	}
 
 	sealed class RegexReplace

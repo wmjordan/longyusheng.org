@@ -124,7 +124,7 @@
 			<xsl:when test="$sort = 'Æ´Òô'">
 				<div style="margin-left: 20pt;" class="doublelist">
 					<xsl:for-each select="Àà±ð/´ÊÅÆ/Ãû³Æ">
-						<xsl:sort select="." data-type="text" order="ascending" />
+						<xsl:sort select="js:useNonEmpty(@ÅÅÐòÃû, text())" data-type="text" order="ascending" />
 						<span class="item">
 							<a>
 								<xsl:attribute name="href">
