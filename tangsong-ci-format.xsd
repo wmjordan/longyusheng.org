@@ -23,6 +23,7 @@
 												</xs:sequence>
 											</xs:complexType>
 										</xs:element>
+										<xs:element ref="校注" minOccurs="0" maxOccurs="1"/>
 										<xs:element name="正文" maxOccurs="unbounded">
 											<xs:complexType>
 												<xs:sequence>
@@ -32,6 +33,7 @@
 														<xs:element name="例词" type="链接Type" minOccurs="0" maxOccurs="unbounded"/>
 													</xs:sequence>
 													<xs:element name="附注" type="段落Type" minOccurs="0" maxOccurs="unbounded"/>
+													<xs:element ref="校注" minOccurs="0" maxOccurs="1"/>
 												</xs:sequence>
 											</xs:complexType>
 										</xs:element>

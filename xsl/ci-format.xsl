@@ -232,6 +232,7 @@
 					<xsl:apply-templates select="段落"/>
 				</div>
 			</xsl:for-each>
+			<xsl:apply-templates select="校注"/>
 			<br class="empty"/>
 			<xsl:apply-templates select="正文"/>
 			<xsl:call-template name="formatExample"/>
@@ -271,7 +272,7 @@
 	</xsl:template>
 	
 	<xsl:template match="正文">
-		<xsl:apply-templates select="格律|附注"/>
+		<xsl:apply-templates select="格律|附注|校注"/>
 	</xsl:template>
 
 	<xsl:template name="formatExample">
@@ -356,6 +357,14 @@
 	</xsl:template>
 	<xsl:template match="附注/text()">
 		<xsl:value-of select="translate(., '－│＋！％＊','平仄中仄')"/>
+	</xsl:template>
+	<xsl:template match="校注">
+		<div class="detailnote note">
+			<div class="edit">校注</div>
+			<div class="AppendixContent">
+				<xsl:apply-templates select="*"/>
+			</div>
+		</div>
 	</xsl:template>
 	<xsl:template match="词/正文">
 		<li id="ce{position()}" class="ceItem">
